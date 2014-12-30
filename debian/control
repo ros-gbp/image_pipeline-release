@@ -1,0 +1,12 @@
+Source: ros-indigo-image-view
+Section: misc
+Priority: extra
+Maintainer: Vincent Rabaud <vincent.rabaud@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), libgtk2.0-dev, libopencv-dev, ros-indigo-camera-calibration-parsers, ros-indigo-catkin, ros-indigo-cv-bridge, ros-indigo-image-transport, ros-indigo-message-filters, ros-indigo-nodelet, ros-indigo-rosconsole, ros-indigo-roscpp, ros-indigo-rostest, ros-indigo-sensor-msgs, ros-indigo-std-srvs, ros-indigo-stereo-msgs
+Homepage: http://www.ros.org/wiki/image_view
+Standards-Version: 3.9.2
+
+Package: ros-indigo-image-view
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libgtk2.0-dev, libopencv-dev, ros-indigo-camera-calibration-parsers, ros-indigo-cv-bridge, ros-indigo-image-transport, ros-indigo-message-filters, ros-indigo-nodelet, ros-indigo-rosconsole, ros-indigo-roscpp, ros-indigo-std-srvs
+Description: A simple viewer for ROS image topics. Includes a specialized viewer for stereo + disparity images.
