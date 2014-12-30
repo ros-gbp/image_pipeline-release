@@ -1,3 +1,8 @@
+1.12.12 (2014-12-31)
+--------------------
+* try to improve `#112 <https://github.com/ros-perception/image_pipeline/issues/112>`_
+* Contributors: Vincent Rabaud
+
 1.12.11 (2014-10-26)
 --------------------
 
