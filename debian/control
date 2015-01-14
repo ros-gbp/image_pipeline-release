@@ -1,0 +1,12 @@
+Source: ros-jade-image-view
+Section: misc
+Priority: extra
+Maintainer: Vincent Rabaud <vincent.rabaud@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), libgtk2.0-dev, libopencv-dev, ros-jade-camera-calibration-parsers, ros-jade-catkin, ros-jade-cv-bridge, ros-jade-image-transport, ros-jade-message-filters, ros-jade-nodelet, ros-jade-rosconsole, ros-jade-roscpp, ros-jade-rostest, ros-jade-sensor-msgs, ros-jade-std-srvs, ros-jade-stereo-msgs
+Homepage: http://www.ros.org/wiki/image_view
+Standards-Version: 3.9.2
+
+Package: ros-jade-image-view
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libgtk2.0-dev, libopencv-dev, ros-jade-camera-calibration-parsers, ros-jade-cv-bridge, ros-jade-image-transport, ros-jade-message-filters, ros-jade-nodelet, ros-jade-rosconsole, ros-jade-roscpp, ros-jade-std-srvs
+Description: A simple viewer for ROS image topics. Includes a specialized viewer for stereo + disparity images.
