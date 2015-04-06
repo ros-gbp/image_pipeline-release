@@ -1,0 +1,12 @@
+Source: ros-indigo-image-pipeline
+Section: misc
+Priority: extra
+Maintainer: Vincent Rabaud <vincent.rabaud@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), ros-indigo-catkin
+Homepage: http://www.ros.org/wiki/image_pipeline
+Standards-Version: 3.9.2
+
+Package: ros-indigo-image-pipeline
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-indigo-camera-calibration, ros-indigo-depth-image-proc, ros-indigo-image-proc, ros-indigo-image-rotate, ros-indigo-image-view, ros-indigo-stereo-image-proc
+Description: image_pipeline fills the gap between getting raw images from a camera driver and higher-level vision processing.
