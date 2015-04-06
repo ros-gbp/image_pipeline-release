@@ -1,3 +1,6 @@
+1.12.13 (2015-04-06)
+--------------------
+
 1.12.12 (2014-12-31)
 --------------------
 * Convert function to inline to avoid duplicates with image_transport
