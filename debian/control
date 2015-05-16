@@ -1,0 +1,12 @@
+Source: ros-hydro-image-proc
+Section: misc
+Priority: extra
+Maintainer: Vincent Rabaud <vincent.rabaud@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), libboost-all-dev, ros-hydro-camera-calibration-parsers, ros-hydro-catkin (>= 0.5.68), ros-hydro-cv-bridge, ros-hydro-dynamic-reconfigure, ros-hydro-image-geometry, ros-hydro-image-transport, ros-hydro-nodelet, ros-hydro-opencv2, ros-hydro-roscpp, ros-hydro-rostest, ros-hydro-sensor-msgs
+Homepage: http://www.ros.org/wiki/image_proc
+Standards-Version: 3.9.2
+
+Package: ros-hydro-image-proc
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-hydro-cv-bridge, ros-hydro-dynamic-reconfigure, ros-hydro-image-geometry, ros-hydro-image-transport, ros-hydro-nodelet, ros-hydro-opencv2, ros-hydro-roscpp, ros-hydro-sensor-msgs
+Description: Single image rectification and color processing.
