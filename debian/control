@@ -1,0 +1,12 @@
+Source: ros-hydro-camera-calibration
+Section: misc
+Priority: extra
+Maintainer: Vincent Rabaud <vincent.rabaud@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), ros-hydro-catkin (>= 0.5.68), ros-hydro-rostest
+Homepage: http://www.ros.org/wiki/camera_calibration
+Standards-Version: 3.9.2
+
+Package: ros-hydro-camera-calibration
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-hydro-cv-bridge, ros-hydro-image-geometry, ros-hydro-message-filters, ros-hydro-opencv2, ros-hydro-rospy, ros-hydro-sensor-msgs, ros-hydro-std-srvs
+Description: camera_calibration allows easy calibration of monocular or stereo cameras using a checkerboard calibration target.
