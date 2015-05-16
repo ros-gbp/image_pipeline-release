@@ -1,0 +1,12 @@
+Source: ros-hydro-image-view
+Section: misc
+Priority: extra
+Maintainer: Vincent Rabaud <vincent.rabaud@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), libgtk2.0-dev, ros-hydro-camera-calibration-parsers, ros-hydro-catkin, ros-hydro-cv-bridge, ros-hydro-image-transport, ros-hydro-message-filters, ros-hydro-nodelet, ros-hydro-opencv2, ros-hydro-rosconsole, ros-hydro-roscpp, ros-hydro-rostest, ros-hydro-sensor-msgs, ros-hydro-std-srvs, ros-hydro-stereo-msgs
+Homepage: http://www.ros.org/wiki/image_view
+Standards-Version: 3.9.2
+
+Package: ros-hydro-image-view
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libgtk2.0-dev, ros-hydro-camera-calibration-parsers, ros-hydro-cv-bridge, ros-hydro-image-transport, ros-hydro-message-filters, ros-hydro-nodelet, ros-hydro-opencv2, ros-hydro-rosconsole, ros-hydro-roscpp, ros-hydro-std-srvs
+Description: A simple viewer for ROS image topics. Includes a specialized viewer for stereo + disparity images.
