@@ -34,12 +34,14 @@
 #include <ros/ros.h>
 #include <nodelet/nodelet.h>
 #include <image_transport/image_transport.h>
+#include <pcl_ros/point_cloud.h>
+#include <pcl/point_types.h>
 #include <sensor_msgs/image_encodings.h>
 #include <image_geometry/pinhole_camera_model.h>
 #include <boost/thread.hpp>
 #include <depth_image_proc/depth_conversions.h>
 
-#include <sensor_msgs/point_cloud2_iterator.h>
+#include <pcl_conversions/pcl_conversions.h>
 
 namespace depth_image_proc {
 
@@ -54,7 +56,7 @@ class PointCloudXyzNodelet : public nodelet::Nodelet
 
   // Publications
   boost::mutex connect_mutex_;
-  typedef sensor_msgs::PointCloud2 PointCloud;
+  typedef pcl::PointCloud<pcl::PointXYZ> PointCloud;
   ros::Publisher pub_point_cloud_;
 
   image_geometry::PinholeCameraModel model_;
@@ -102,14 +104,11 @@ void PointCloudXyzNodelet::depthCb(const sensor_msgs::ImageConstPtr& depth_msg,
                                    const sensor_msgs::CameraInfoConstPtr& info_msg)
 {
   PointCloud::Ptr cloud_msg(new PointCloud);
-  cloud_msg->header = depth_msg->header;
+  cloud_msg->header = pcl_conversions::toPCL(depth_msg->header);
   cloud_msg->height = depth_msg->height;
   cloud_msg->width  = depth_msg->width;
   cloud_msg->is_dense = false;
-  cloud_msg->is_bigendian = false;
-
-  sensor_msgs::PointCloud2Modifier pcd_modifier(*cloud_msg);
-  pcd_modifier.setPointCloud2FieldsByString(1, "xyz");
+  cloud_msg->points.resize(cloud_msg->height * cloud_msg->width);
 
   // Update camera model
   model_.fromCameraInfo(info_msg);

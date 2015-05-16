@@ -99,11 +99,8 @@ void DisparityNodelet::onInit()
   bool autosize;
   local_nh.param("autosize", autosize, false);
 
-#if OPENCV3
-  cv::namedWindow(window_name_, autosize ? cv::WND_PROP_AUTOSIZE : 0);
-#else
   cv::namedWindow(window_name_, autosize ? CV_WINDOW_AUTOSIZE : 0);
-
+  
 #ifdef HAVE_GTK
   // Register appropriate handler for when user closes the display window
   GtkWidget *widget = GTK_WIDGET( cvGetWindowHandle(window_name_.c_str()) );
@@ -111,7 +108,6 @@ void DisparityNodelet::onInit()
     g_signal_connect(widget, "destroy", G_CALLBACK(destroyNode), NULL);
   else
     g_signal_connect(widget, "destroy", G_CALLBACK(destroyNodelet), &sub_);
-#endif
 #endif
 
   // Start the OpenCV window thread so we don't have to waitKey() somewhere
@@ -148,15 +144,13 @@ void DisparityNodelet::imageCb(const stereo_msgs::DisparityImageConstPtr& msg)
     
   for (int row = 0; row < disparity_color_.rows; ++row) {
     const float* d = dmat[row];
-    cv::Vec3b *disparity_color = disparity_color_[row],
-              *disparity_color_end = disparity_color + disparity_color_.cols;
-    for (; disparity_color < disparity_color_end; ++disparity_color, ++d) {
-      int index = (*d - min_disparity) * multiplier + 0.5;
+    for (int col = 0; col < disparity_color_.cols; ++col) {
+      int index = (d[col] - min_disparity) * multiplier + 0.5;
       index = std::min(255, std::max(0, index));
       // Fill as BGR
-      (*disparity_color)[2] = colormap[3*index + 0];
-      (*disparity_color)[1] = colormap[3*index + 1];
-      (*disparity_color)[0] = colormap[3*index + 2];
+      disparity_color_(row, col)[2] = colormap[3*index + 0];
+      disparity_color_(row, col)[1] = colormap[3*index + 1];
+      disparity_color_(row, col)[0] = colormap[3*index + 2];
     }
   }
 
