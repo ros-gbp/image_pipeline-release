@@ -1,3 +1,13 @@
+1.12.14 (2015-07-22)
+--------------------
+* reduce the differences between OpenCV2 and 3
+* do not build GUIs on Android
+  This fixes `#137 <https://github.com/ros-perception/image_pipeline/issues/137>`_
+* Contributors: Vincent Rabaud
+
+1.12.13 (2015-04-06)
+--------------------
+
 1.12.12 (2014-12-31)
 --------------------
 * Convert function to inline to avoid duplicates with image_transport
