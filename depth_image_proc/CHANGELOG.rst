@@ -1,3 +1,11 @@
+1.12.14 (2015-07-22)
+--------------------
+
+1.12.13 (2015-04-06)
+--------------------
+* Add radial point cloud processors
+* Contributors: Hunter Laux
+
 1.12.12 (2014-12-31)
 --------------------
 * adds range_max
