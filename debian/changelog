@@ -1,0 +1,119 @@
+ros-jade-image-view (1.12.14-0vivid) vivid; urgency=high
+
+  * reduce the differences between OpenCV2 and 3
+  * do not build GUIs on Android
+    This fixes #137 <https://github.com/ros-perception/image_pipeline/issues/137>
+  * Contributors: Vincent Rabaud
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Tue, 21 Jul 2015 22:00:00 -0000
+
+ros-jade-image-view (1.12.13-0vivid) vivid; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sun, 05 Apr 2015 22:00:00 -0000
+
+ros-jade-image-view (1.12.12-0vivid) vivid; urgency=high
+
+  * Convert function to inline to avoid duplicates with image_transport
+  * Revert "remove GTK dependency"
+    This reverts commit a6e15e796a40385fbbf8da05966aa47d179dcb46.
+    Conflicts:
+    image_view/CMakeLists.txt
+    image_view/src/nodelets/disparity_nodelet.cpp
+    image_view/src/nodes/stereo_view.cpp
+  * Revert "make sure waitKey is called after imshow"
+    This reverts commit d13e3ed6af819459bca221ece779964a74beefac.
+  * Revert "brings back window_thread"
+    This reverts commit 41a655e8e99910c13a3e7f1ebfdd083207cef76f.
+  * Contributors: Gary Servin, Vincent Rabaud
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Tue, 30 Dec 2014 23:00:00 -0000
+
+ros-jade-image-view (1.12.11-0vivid) vivid; urgency=high
+
+  * brings back window_thread
+    This fixes #102 <https://github.com/ros-perception/image_pipeline/issues/102> fully
+  * small optimizations
+  * add the image_transport parameter
+  * Contributors: Vincent Rabaud
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sat, 25 Oct 2014 22:00:00 -0000
+
+ros-jade-image-view (1.12.10-0vivid) vivid; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sat, 27 Sep 2014 22:00:00 -0000
+
+ros-jade-image-view (1.12.9-0vivid) vivid; urgency=high
+
+  * get code to compile with OpenCV3
+    fixes #96 <https://github.com/ros-perception/image_pipeline/issues/96>
+  * Contributors: Vincent Rabaud
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sat, 20 Sep 2014 22:00:00 -0000
+
+ros-jade-image-view (1.12.8-0vivid) vivid; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Mon, 18 Aug 2014 22:00:00 -0000
+
+ros-jade-image-view (1.12.6-0vivid) vivid; urgency=high
+
+  * make sure waitKey is called after imshow
+  * remove GTK dependency
+  * small speedups
+  * Contributors: Vincent Rabaud
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sat, 26 Jul 2014 22:00:00 -0000
+
+ros-jade-image-view (1.12.5-0vivid) vivid; urgency=high
+
+  * image_view: Add depend on gtk2
+  * Contributors: Scott K Logan
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sat, 10 May 2014 22:00:00 -0000
+
+ros-jade-image-view (1.12.4-0vivid) vivid; urgency=high
+
+  * fixes #65 <https://github.com/ros-perception/image_pipeline/issues/65>
+  * Contributors: Vincent Rabaud
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sun, 27 Apr 2014 22:00:00 -0000
+
+ros-jade-image-view (1.12.3-0vivid) vivid; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Fri, 11 Apr 2014 22:00:00 -0000
+
+ros-jade-image-view (1.12.2-0vivid) vivid; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Mon, 07 Apr 2014 22:00:00 -0000
+
+ros-jade-image-view (1.12.1-0vivid) vivid; urgency=high
+
+  * get proper opencv dependency
+  * Contributors: Vincent Rabaud
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sat, 05 Apr 2014 22:00:00 -0000
+
+ros-jade-image-view (1.11.7-0vivid) vivid; urgency=high
+
+  * Added requirement for core.
+  * Contributors: Jonathan J Hunt
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Thu, 27 Mar 2014 23:00:00 -0000
+
+ros-jade-image-view (1.11.3-0vivid) vivid; urgency=high
+
+  * #41: allow image_saver to save image topics
+  * #40: use proper download URL
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sun, 06 Oct 2013 21:21:55 +0200
+
+
