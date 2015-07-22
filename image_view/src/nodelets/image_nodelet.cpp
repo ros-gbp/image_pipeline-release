@@ -71,7 +71,6 @@ class ImageNodelet : public nodelet::Nodelet
   image_transport::Subscriber sub_;
 
   boost::mutex image_mutex_;
-  sensor_msgs::ImageConstPtr last_msg_;
   cv::Mat last_image_;
   
   std::string window_name_;
@@ -108,7 +107,8 @@ void ImageNodelet::onInit()
   // Command line argument parsing
   const std::vector<std::string>& argv = getMyArgv();
   // First positional argument is the transport type
-  std::string transport = "raw";
+  std::string transport;
+  local_nh.param("image_transport", transport, std::string("raw"));
   for (int i = 0; i < (int)argv.size(); ++i)
   {
     if (argv[i][0] != '-')
@@ -117,6 +117,7 @@ void ImageNodelet::onInit()
       break;
     }
   }
+  NODELET_INFO_STREAM("Using transport \"" << transport << "\"");
   // Internal option, should be used only by the image_view node
   bool shutdown_on_close = std::find(argv.begin(), argv.end(),
                                      "--shutdown-on-close") != argv.end();
@@ -132,7 +133,7 @@ void ImageNodelet::onInit()
   local_nh.param("filename_format", format_string, std::string("frame%04i.jpg"));
   filename_format_.parse(format_string);
 
-  cv::namedWindow(window_name_, autosize ? CV_WINDOW_AUTOSIZE : 0);
+  cv::namedWindow(window_name_, autosize ? cv::WND_PROP_AUTOSIZE : 0);
   cv::setMouseCallback(window_name_, &ImageNodelet::mouseCb, this);
   
 #ifdef HAVE_GTK
@@ -156,47 +157,29 @@ void ImageNodelet::imageCb(const sensor_msgs::ImageConstPtr& msg)
 {
   image_mutex_.lock();
 
-  // May want to view raw bayer data, which CvBridge doesn't know about
-  if (msg->encoding.find("bayer") != std::string::npos)
-  {
-    last_image_ = cv::Mat(msg->height, msg->width, CV_8UC1,
-                          const_cast<uint8_t*>(&msg->data[0]), msg->step);
-  }
   // We want to scale floating point images so that they display nicely
-  else if(msg->encoding.find("F") != std::string::npos)
+  if(msg->encoding.find("F") != std::string::npos)
   {
-    cv::Mat float_image_bridge = cv_bridge::toCvShare(msg, msg->encoding)->image;
-    cv::Mat_<float> float_image = float_image_bridge;
-    float max_val = 0;
-    for(int i = 0; i < float_image.rows; ++i)
-    {
-      for(int j = 0; j < float_image.cols; ++j)
-      {
-        max_val = std::max(max_val, float_image(i, j));
-      }
-    }
+    cv::Mat float_image = cv_bridge::toCvShare(msg, msg->encoding)->image;
+    double max_val;
+    cv::minMaxIdx(float_image, 0, &max_val);
 
     if(max_val > 0)
-    {
-      float_image /= max_val;
-    }
-    last_image_ = float_image;
+      last_image_ = float_image / max_val;
+    else
+      last_image_ = float_image.clone();
   }
   else
   {
     // Convert to OpenCV native BGR color
     try {
-      last_image_ = cv_bridge::toCvShare(msg, "bgr8")->image;
+      last_image_ = cv_bridge::toCvCopy(msg, "bgr8")->image;
     }
     catch (cv_bridge::Exception& e) {
       NODELET_ERROR_THROTTLE(30, "Unable to convert '%s' image to bgr8: '%s'",
                              msg->encoding.c_str(), e.what());
     }
   }
-
-  // last_image_ may point to data owned by last_msg_, so we hang onto it for
-  // the sake of mouseCb.
-  last_msg_ = msg;
 
   // Must release the mutex before calling cv::imshow, or can deadlock against
   // OpenCV's window mutex.
@@ -211,18 +194,18 @@ void ImageNodelet::mouseCb(int event, int x, int y, int flags, void* param)
   // Trick to use NODELET_* logging macros in static function
   boost::function<const std::string&()> getName =
     boost::bind(&ImageNodelet::getName, this_);
-  
-  if (event == CV_EVENT_LBUTTONDOWN)
+
+  if (event == cv::EVENT_LBUTTONDOWN)
   {
     NODELET_WARN_ONCE("Left-clicking no longer saves images. Right-click instead.");
     return;
   }
-  if (event != CV_EVENT_RBUTTONDOWN)
+  if (event != cv::EVENT_RBUTTONDOWN)
     return;
   
   boost::lock_guard<boost::mutex> guard(this_->image_mutex_);
 
-  const cv::Mat image = this_->last_image_;
+  const cv::Mat &image = this_->last_image_;
   if (image.empty())
   {
     NODELET_WARN("Couldn't save image, no data!");

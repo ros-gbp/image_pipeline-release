@@ -32,6 +32,28 @@
     </description>
   </class>
 
+  <class name="depth_image_proc/point_cloud_xyzi"
+         type="depth_image_proc::PointCloudXyziNodelet"
+         base_class_type="nodelet::Nodelet">
+    <description>
+      Nodelet to combine registered depth image and intensity image into XYZI point cloud.
+    </description>
+  </class>
+  <class name="depth_image_proc/point_cloud_xyz_radial"
+         type="depth_image_proc::PointCloudXyzRadialNodelet"
+         base_class_type="nodelet::Nodelet">
+    <description>
+      Nodelet to convert an Radial depth map to a point.
+    </description>
+  </class>
+
+  <class name="depth_image_proc/point_cloud_xyzi_radial"
+         type="depth_image_proc::PointCloudXyziRadialNodelet"
+         base_class_type="nodelet::Nodelet">
+    <description>
+      Nodelet to convert an Radial depth and intensity map to a point.
+    </description>
+  </class>
   <class name="depth_image_proc/register"
 	 type="depth_image_proc::RegisterNodelet"
 	 base_class_type="nodelet::Nodelet">

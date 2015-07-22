@@ -323,7 +323,7 @@ static unsigned char colormap[768] =
     255,  0, 0,
   };
 
-void increment(int* value)
+inline void increment(int* value)
 {
   ++(*value);
 }
@@ -372,13 +372,15 @@ public:
     filename_format_.parse(format_string);
 
     // Do GUI window setup
-    int flags = autosize ? CV_WINDOW_AUTOSIZE : 0;
+    int flags = autosize ? cv::WND_PROP_AUTOSIZE : 0;
     cv::namedWindow("left", flags);
     cv::namedWindow("right", flags);
     cv::namedWindow("disparity", flags);
-    cvSetMouseCallback("left",      &StereoView::mouseCb, this);
-    cvSetMouseCallback("right",     &StereoView::mouseCb, this);
-    cvSetMouseCallback("disparity", &StereoView::mouseCb, this);
+    cv::setMouseCallback("left",      &StereoView::mouseCb, this);
+    cv::setMouseCallback("right",     &StereoView::mouseCb, this);
+    cv::setMouseCallback("disparity", &StereoView::mouseCb, this);
+#if OPENCV3
+#else
 #ifdef HAVE_GTK
     g_signal_connect(GTK_WIDGET( cvGetWindowHandle("left") ),
                      "destroy", G_CALLBACK(destroy), NULL);
@@ -388,6 +390,7 @@ public:
                      "destroy", G_CALLBACK(destroy), NULL);
 #endif
     cvStartWindowThread();
+#endif
 
     // Resolve topic names
     ros::NodeHandle nh;
@@ -431,7 +434,7 @@ public:
 
   ~StereoView()
   {
-    cvDestroyAllWindows();
+    cv::destroyAllWindows();
   }
 
   void imageCb(const ImageConstPtr& left, const ImageConstPtr& right,
@@ -504,12 +507,12 @@ public:
   
   static void mouseCb(int event, int x, int y, int flags, void* param)
   {
-    if (event == CV_EVENT_LBUTTONDOWN)
+    if (event == cv::EVENT_LBUTTONDOWN)
     {
       ROS_WARN_ONCE("Left-clicking no longer saves images. Right-click instead.");
       return;
     }
-    if (event != CV_EVENT_RBUTTONDOWN)
+    if (event != cv::EVENT_RBUTTONDOWN)
       return;
     
     StereoView *sv = (StereoView*)param;

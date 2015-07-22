@@ -15,13 +15,16 @@ catkin_package(
 
 include_directories(include)
 
-find_package(OpenCV REQUIRED calib3d)
+find_package(OpenCV REQUIRED)
+if (OpenCV_VERSION VERSION_EQUAL "3")
+  add_definitions("-DOPENCV3=1")
+endif()
 include_directories(SYSTEM ${catkin_INCLUDE_DIRS}
                            ${OpenCV_INCLUDE_DIRS}
 )
 
 # Nodelet library
-add_library(${PROJECT_NAME} src/libstereo_image_proc/processor.cpp src/nodelets/disparity.cpp src/nodelets/point_cloud2.cpp src/nodelets/point_cloud.cpp)
+add_library(${PROJECT_NAME} src/libstereo_image_proc/processor.cpp src/nodelets/disparity.cpp src/nodelets/point_cloud2.cpp)
 target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES}
                                       ${OpenCV_LIBRARIES}
 )

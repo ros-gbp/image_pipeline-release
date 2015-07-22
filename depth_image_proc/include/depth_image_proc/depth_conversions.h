@@ -35,7 +35,7 @@
 #define DEPTH_IMAGE_PROC_DEPTH_CONVERSIONS
 
 #include <sensor_msgs/Image.h>
-#include <pcl/point_types.h>
+#include <sensor_msgs/point_cloud2_iterator.h>
 #include <image_geometry/pinhole_camera_model.h>
 #include <depth_image_proc/depth_traits.h>
 
@@ -43,11 +43,13 @@
 
 namespace depth_image_proc {
 
+typedef sensor_msgs::PointCloud2 PointCloud;
+
 // Handles float or uint16 depths
 template<typename T>
 void convert(
     const sensor_msgs::ImageConstPtr& depth_msg,
-    pcl::PointCloud<pcl::PointXYZ>::Ptr& cloud_msg,
+    PointCloud::Ptr& cloud_msg,
     const image_geometry::PinholeCameraModel& model,
     double range_max = 0.0)
 {
@@ -61,14 +63,15 @@ void convert(
   float constant_y = unit_scaling / model.fy();
   float bad_point = std::numeric_limits<float>::quiet_NaN();
 
-  pcl::PointCloud<pcl::PointXYZ>::iterator pt_iter = cloud_msg->begin();
+  sensor_msgs::PointCloud2Iterator<float> iter_x(*cloud_msg, "x");
+  sensor_msgs::PointCloud2Iterator<float> iter_y(*cloud_msg, "y");
+  sensor_msgs::PointCloud2Iterator<float> iter_z(*cloud_msg, "z");
   const T* depth_row = reinterpret_cast<const T*>(&depth_msg->data[0]);
   int row_step = depth_msg->step / sizeof(T);
   for (int v = 0; v < (int)cloud_msg->height; ++v, depth_row += row_step)
   {
-    for (int u = 0; u < (int)cloud_msg->width; ++u)
+    for (int u = 0; u < (int)cloud_msg->width; ++u, ++iter_x, ++iter_y, ++iter_z)
     {
-      pcl::PointXYZ& pt = *pt_iter++;
       T depth = depth_row[u];
 
       // Missing points denoted by NaNs
@@ -80,15 +83,15 @@ void convert(
         }
         else
         {
-          pt.x = pt.y = pt.z = bad_point;
+          *iter_x = *iter_y = *iter_z = bad_point;
           continue;
         }
       }
 
       // Fill in XYZ
-      pt.x = (u - center_x) * depth * constant_x;
-      pt.y = (v - center_y) * depth * constant_y;
-      pt.z = DepthTraits<T>::toMeters(depth);
+      *iter_x = (u - center_x) * depth * constant_x;
+      *iter_y = (v - center_y) * depth * constant_y;
+      *iter_z = DepthTraits<T>::toMeters(depth);
     }
   }
 }

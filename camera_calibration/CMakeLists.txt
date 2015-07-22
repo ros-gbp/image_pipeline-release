@@ -10,9 +10,6 @@ if(CATKIN_ENABLE_TESTING)
   # Unit test of calibrator.py
   catkin_add_nosetests(test/directed.py)
 
-  # Unit test of the approximate synchronizer
-  catkin_add_nosetests(test/testapproxsync.py)
-
   # Tests simple calibration dataset
   catkin_download_test_data(camera_calibration.tar.gz http://download.ros.org/data/camera_calibration/camera_calibration.tar.gz
     DESTINATION ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_SHARE_DESTINATION}/tests
@@ -27,10 +24,8 @@ if(CATKIN_ENABLE_TESTING)
   catkin_add_nosetests(test/multiple_boards.py)
 endif()
 
-install(PROGRAMS nodes/camera_calibrate_from_disk.py 
-                 nodes/cameracalibrator.py
-                 nodes/cameracheck.py
-                 nodes/camera_hammer.py
-                 scripts/tarfile_calibration.py
-        DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+catkin_install_python(PROGRAMS nodes/cameracalibrator.py
+  nodes/cameracheck.py
+  scripts/tarfile_calibration.py
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
