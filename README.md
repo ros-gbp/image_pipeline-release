@@ -1,3 +1,31 @@
+## image_pipeline (jade) - 1.12.14-0
+
+The packages in the `image_pipeline` repository were released into the `jade` distro by running `/usr/bin/bloom-release --rosdistro jade --track jade image_pipeline` on `Wed, 22 Jul 2015 21:44:42 -0000`
+
+These packages were released:
+- `camera_calibration`
+- `depth_image_proc`
+- `image_pipeline`
+- `image_proc`
+- `image_rotate`
+- `image_view`
+- `stereo_image_proc`
+
+Version of package(s) in repository `image_pipeline`:
+- upstream repository: https://github.com/ros-perception/image_pipeline.git
+- release repository: https://github.com/ros-gbp/image_pipeline-release.git
+- rosdistro version: `1.12.12-0`
+- old version: `1.12.12-0`
+- new version: `1.12.14-0`
+
+Versions of tools used:
+- bloom version: `0.5.20`
+- catkin_pkg version: `0.2.8`
+- rosdep version: `0.11.2`
+- rosdistro version: `0.4.2`
+- vcstools version: `0.1.36`
+
+
 ## image_pipeline (indigo) - 1.12.14-0
 
 The packages in the `image_pipeline` repository were released into the `indigo` distro by running `/usr/bin/bloom-release --rosdistro indigo --track indigo image_pipeline` on `Wed, 22 Jul 2015 21:40:32 -0000`
