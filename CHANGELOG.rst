@@ -1,3 +1,14 @@
+1.12.14 (2015-07-22)
+--------------------
+* add StereoSGBM and it can be chosen from dynamic_reconfigure
+* Contributors: Ryohei Ueda
+
+1.12.13 (2015-04-06)
+--------------------
+* get code to compile with OpenCV3
+* modify pointcloud data format of stereo_image_proc using point_cloud2_iterator
+* Contributors: Hiroaki Yaguchi, Vincent Rabaud
+
 1.12.12 (2014-12-31)
 --------------------
 
