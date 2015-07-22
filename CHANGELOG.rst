@@ -1,3 +1,17 @@
+1.12.14 (2015-07-22)
+--------------------
+* remove camera_hammer and install Python nodes properly
+  camera_hammer was just a test for camera info, nothing to do with
+  calibration. Plus the test was basic.
+* Correct three errors that prevented the node to work properly.
+* Contributors: Filippo Basso, Vincent Rabaud
+
+1.12.13 (2015-04-06)
+--------------------
+* replace Queue by deque of fixed size for simplicity
+  That is a potential fix for `#112 <https://github.com/ros-perception/image_pipeline/issues/112>`_
+* Contributors: Vincent Rabaud
+
 1.12.12 (2014-12-31)
 --------------------
 * try to improve `#112 <https://github.com/ros-perception/image_pipeline/issues/112>`_
