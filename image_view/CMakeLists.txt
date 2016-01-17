@@ -1,16 +1,13 @@
 cmake_minimum_required(VERSION 2.8)
 project(image_view)
 
-find_package(catkin REQUIRED)
-catkin_package()
+find_package(catkin REQUIRED COMPONENTS camera_calibration_parsers cv_bridge dynamic_reconfigure image_transport message_filters message_generation nodelet rosconsole roscpp)
+generate_dynamic_reconfigure_options(cfg/ImageView.cfg)
 
+catkin_package(CATKIN_DEPENDS dynamic_reconfigure)
 find_package(Boost REQUIRED COMPONENTS signals thread)
 find_package(OpenCV REQUIRED)
-if (OpenCV_VERSION VERSION_EQUAL "3")
-  add_definitions("-DOPENCV3=1")
-endif()
 
-find_package(catkin REQUIRED camera_calibration_parsers cv_bridge image_transport message_filters nodelet rosconsole roscpp)
 include_directories(SYSTEM ${Boost_INCLUDE_DIRS}
                            ${catkin_INCLUDE_DIRS}
                            ${OpenCV_INCLUDE_DIRS}
@@ -59,9 +56,11 @@ install(TARGETS image_view
 
 # Image viewers
 add_executable(image_view_exe src/nodes/image_view.cpp)
+add_dependencies(image_view_exe ${PROJECT_NAME}_gencfg)
 SET_TARGET_PROPERTIES(image_view_exe PROPERTIES OUTPUT_NAME image_view)
 target_link_libraries(image_view_exe ${catkin_LIBRARIES}
                                      ${OpenCV_LIBRARIES}
+                                     ${Boost_LIBRARIES}
 )
 
 add_executable(disparity_view src/nodes/disparity_view.cpp)
@@ -82,4 +81,10 @@ install(TARGETS disparity_view image_view_exe stereo_view
 )
 install(FILES nodelet_plugins.xml
         DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+)
+
+# Python programs
+catkin_install_python(
+  PROGRAMS scripts/extract_images_sync
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
