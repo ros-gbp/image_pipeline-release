@@ -46,7 +46,7 @@ import random
 import sensor_msgs.msg
 import tarfile
 import time
-
+from distutils.version import LooseVersion
 
 
 # Supported calibration patterns
@@ -98,7 +98,7 @@ def _get_outside_corners(corners, board):
 
 def _get_skew(corners, board):
     """
-    Get skew for given checkerboard detection. 
+    Get skew for given checkerboard detection.
     Scaled to [0,1], which 0 = no skew, 1 = high skew
     Skew is proportional to the divergence of three outside corners from 90 degrees.
     """
@@ -237,9 +237,10 @@ class Calibrator(object):
         Convert a message into a 8-bit 1 channel monochrome OpenCV image
         """
         # as cv_bridge automatically scales, we need to remove that behavior
-        if msg.encoding.endswith('16'):
-            mono16 = self.br.imgmsg_to_cv2(msg, "mono16")
-            mono8 = mono16.astype(numpy.uint8)
+        # TODO: get a Python API in cv_bridge to check for the image depth.
+        if self.br.encoding_to_dtype_with_channels(msg.encoding)[0] in ['uint16', 'int16']:
+            mono16 = self.br.imgmsg_to_cv2(msg, '16UC1')
+            mono8 = numpy.array(numpy.clip(mono16, 0, 255), dtype=numpy.uint8)
             return mono8
         elif 'FC1' in msg.encoding:
             # floating point image handling
@@ -430,7 +431,6 @@ class Calibrator(object):
         print("R = ", numpy.ravel(r).tolist())
         print("P = ", numpy.ravel(p).tolist())
 
-    # TODO Get rid of OST format, show output as YAML instead
     def lrost(self, name, d, k, r, p):
         calmessage = (
         "# oST version 5.0 parameters\n"
@@ -465,6 +465,31 @@ class Calibrator(object):
         + " ".join(["%8f" % p[2,i] for i in range(4)]) + "\n"
         + "\n")
         assert len(calmessage) < 525, "Calibration info must be less than 525 bytes"
+        return calmessage
+
+    def lryaml(self, name, d, k, r, p):
+        calmessage = (""
+        + "image_width: " + str(self.size[0]) + "\n"
+        + "image_height: " + str(self.size[1]) + "\n"
+        + "camera_name: " + name + "\n"
+        + "camera_matrix:\n"
+        + "  rows: 3\n"
+        + "  cols: 3\n"
+        + "  data: [" + ", ".join(["%8f" % i for i in k.reshape(1,9)[0]]) + "]\n"
+        + "distortion_model: " + ("rational_polynomial" if d.size > 5 else "plumb_bob") + "\n"
+        + "distortion_coefficients:\n"
+        + "  rows: 1\n"
+        + "  cols: 5\n"
+        + "  data: [" + ", ".join(["%8f" % d[i,0] for i in range(d.shape[0])]) + "]\n"
+        + "rectification_matrix:\n"
+        + "  rows: 3\n"
+        + "  cols: 3\n"
+        + "  data: [" + ", ".join(["%8f" % i for i in r.reshape(1,9)[0]]) + "]\n"
+        + "projection_matrix:\n"
+        + "  rows: 3\n"
+        + "  cols: 4\n"
+        + "  data: [" + ", ".join(["%8f" % i for i in p.reshape(1,12)[0]]) + "]\n"
+        + "")
         return calmessage
 
     def do_save(self):
@@ -640,6 +665,9 @@ class MonoCalibrator(Calibrator):
     def ost(self):
         return self.lrost(self.name, self.distortion, self.intrinsics, self.R, self.P)
 
+    def yaml(self):
+        return self.lryaml(self.name, self.distortion, self.intrinsics, self.R, self.P)
+
     def linear_error_from_image(self, image):
         """
         Detect the checkerboard and compute the linear error.
@@ -764,7 +792,7 @@ class MonoCalibrator(Calibrator):
         ims = [("left-%04d.png" % i, im) for i,(_, im) in enumerate(self.db)]
         for (name, im) in ims:
             taradd(name, cv2.imencode(".png", im)[1].tostring())
-
+        taradd('ost.yaml', self.yaml())
         taradd('ost.txt', self.ost())
 
     def do_tarfile_calibration(self, filename):
@@ -846,13 +874,23 @@ class StereoCalibrator(Calibrator):
 
         self.T = numpy.zeros((3, 1), dtype=numpy.float64)
         self.R = numpy.eye(3, dtype=numpy.float64)
-        cv2.stereoCalibrate(opts, lipts, ripts, self.size,
-                           self.l.intrinsics, self.l.distortion,
-                           self.r.intrinsics, self.r.distortion,
-                           self.R,                            # R
-                           self.T,                            # T
-                           criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 1, 1e-5),
-                           flags = flags)
+        if LooseVersion(cv2.__version__).version[0] == 2:
+            cv2.stereoCalibrate(opts, lipts, ripts, self.size,
+                               self.l.intrinsics, self.l.distortion,
+                               self.r.intrinsics, self.r.distortion,
+                               self.R,                            # R
+                               self.T,                            # T
+                               criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 1, 1e-5),
+                               flags = flags)
+        else:
+            cv2.stereoCalibrate(opts, lipts, ripts,
+                               self.l.intrinsics, self.l.distortion,
+                               self.r.intrinsics, self.r.distortion,
+                               self.size,
+                               self.R,                            # R
+                               self.T,                            # T
+                               criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 1, 1e-5),
+                               flags = flags)
 
         self.set_alpha(0.0)
 
@@ -912,6 +950,9 @@ class StereoCalibrator(Calibrator):
     def ost(self):
         return (self.lrost(self.name + "/left", self.l.distortion, self.l.intrinsics, self.l.R, self.l.P) +
           self.lrost(self.name + "/right", self.r.distortion, self.r.intrinsics, self.r.R, self.r.P))
+
+    def yaml(self, suffix, info):
+        return self.lryaml(self.name + suffix, info.distortion, info.intrinsics, info.R, info.P)
 
     # TODO Get rid of "from_images" versions of these, instead have function to get undistorted corners
     def epipolar_error_from_images(self, limage, rimage):
@@ -1070,7 +1111,8 @@ class StereoCalibrator(Calibrator):
 
         for (name, im) in ims:
             taradd(name, cv2.imencode(".png", im)[1].tostring())
-
+        taradd('left.yaml', self.yaml("/left", self.l))
+        taradd('right.yaml', self.yaml("/right", self.r))
         taradd('ost.txt', self.ost())
 
     def do_tarfile_calibration(self, filename):
