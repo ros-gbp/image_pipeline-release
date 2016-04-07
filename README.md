@@ -1,3 +1,36 @@
+## image_pipeline (kinetic) - 1.12.16-0
+
+The packages in the `image_pipeline` repository were released into the `kinetic` distro by running `/usr/bin/bloom-release --track kinetic --rosdistro kinetic image_pipeline` on `Thu, 07 Apr 2016 19:16:45 -0000`
+
+These packages were released:
+- `camera_calibration`
+- `depth_image_proc`
+- `image_pipeline`
+- `image_proc`
+- `image_rotate`
+- `image_view`
+- `stereo_image_proc`
+
+These packages were explicitly ignored:
+- `wiki_files`
+
+Version of package(s) in repository `image_pipeline`:
+
+- upstream repository: https://github.com/ros-perception/image_pipeline.git
+- release repository: unknown
+- rosdistro version: `null`
+- old version: `null`
+- new version: `1.12.16-0`
+
+Versions of tools used:
+
+- bloom version: `0.5.21`
+- catkin_pkg version: `0.2.10`
+- rosdep version: `0.11.4`
+- rosdistro version: `0.4.7`
+- vcstools version: `0.1.38`
+
+
 ## image_pipeline (jade) - 1.12.16-0
 
 The packages in the `image_pipeline` repository were released into the `jade` distro by running `/usr/bin/bloom-release --track jade --rosdistro jade image_pipeline` on `Sat, 19 Mar 2016 09:11:12 -0000`
