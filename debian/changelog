@@ -1,0 +1,124 @@
+ros-kinetic-depth-image-proc (1.12.16-0jessie) jessie; urgency=high
+
+  * check number of channels before the process
+  * search minimum value with OpenCV
+  * Use OpenCV to be faster
+  * Add a feature for a depth image to crop foremost image
+  * Contributors: Kenta Yonekura
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Fri, 18 Mar 2016 23:00:00 -0000
+
+ros-kinetic-depth-image-proc (1.12.15-0jessie) jessie; urgency=high
+
+  * Add option for exact time sync for point_cloud_xyzrgb
+  * simplify OpenCV3 conversion
+  * Contributors: Kentaro Wada, Vincent Rabaud
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sat, 16 Jan 2016 23:00:00 -0000
+
+ros-kinetic-depth-image-proc (1.12.14-0jessie) jessie; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Tue, 21 Jul 2015 22:00:00 -0000
+
+ros-kinetic-depth-image-proc (1.12.13-0jessie) jessie; urgency=high
+
+  * Add radial point cloud processors
+  * Contributors: Hunter Laux
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sun, 05 Apr 2015 22:00:00 -0000
+
+ros-kinetic-depth-image-proc (1.12.12-0jessie) jessie; urgency=high
+
+  * adds range_max
+  * exports depth_conversions
+    with convert for xyz PC only
+  * exports DepthTraits
+  * Contributors: enriquefernandez
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Tue, 30 Dec 2014 23:00:00 -0000
+
+ros-kinetic-depth-image-proc (1.12.11-0jessie) jessie; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sat, 25 Oct 2014 22:00:00 -0000
+
+ros-kinetic-depth-image-proc (1.12.10-0jessie) jessie; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sat, 27 Sep 2014 22:00:00 -0000
+
+ros-kinetic-depth-image-proc (1.12.9-0jessie) jessie; urgency=high
+
+  * get code to compile with OpenCV3
+    fixes #96 <https://github.com/ros-perception/image_pipeline/issues/96>
+  * Contributors: Vincent Rabaud
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sat, 20 Sep 2014 22:00:00 -0000
+
+ros-kinetic-depth-image-proc (1.12.8-0jessie) jessie; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Mon, 18 Aug 2014 22:00:00 -0000
+
+ros-kinetic-depth-image-proc (1.12.6-0jessie) jessie; urgency=high
+
+  * Add point_cloud_xyzi nodelet
+    This is for cameras that output depth and intensity images.
+    It's based on the point_cloud_xyzrgb nodelet.
+  * Missing runtime dependency - eigen_conversions
+    libdepth_image_proc is missing this dependency at runtime
+    ```
+    > ldd libdepth_image_proc.so  | grep eigen
+    libeigen_conversions.so => not found
+    ```
+    Which causes the following error on loading depth_image_proc:
+    ```
+    [ INFO] [1402564815.530736554]: /camera/rgb/camera_info -> /camera/rgb/camera_info
+    [ERROR] [1402564815.727176562]: Failed to load nodelet [/camera/depth_metric_rect] of type
+    [depth_image_proc/convert_metric]: Failed to load library /opt/ros/indigo/lib//libdepth_image_proc.so.
+    Make sure that you are calling the PLUGINLIB_EXPORT_CLASS macro in the library code, and that
+    names are consistent between this macro and your XML. Error string: Could not load library (Poco
+    exception = libeigen_conversions.so: cannot open shared object file: No such file or directory)
+    [FATAL] [1402564815.727410623]: Service call failed!
+    ```
+  * Contributors: Daniel Stonier, Hunter Laux
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sat, 26 Jul 2014 22:00:00 -0000
+
+ros-kinetic-depth-image-proc (1.12.4-0jessie) jessie; urgency=high
+
+  * depth_image_proc: fix missing symbols in nodelets
+  * Contributors: Michael Ferguson
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sun, 27 Apr 2014 22:00:00 -0000
+
+ros-kinetic-depth-image-proc (1.12.3-0jessie) jessie; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Fri, 11 Apr 2014 22:00:00 -0000
+
+ros-kinetic-depth-image-proc (1.12.2-0jessie) jessie; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Mon, 07 Apr 2014 22:00:00 -0000
+
+ros-kinetic-depth-image-proc (1.12.1-0jessie) jessie; urgency=high
+
+  * replace tf usage by tf2 usage
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sat, 05 Apr 2014 22:00:00 -0000
+
+ros-kinetic-depth-image-proc (1.12.0-0jessie) jessie; urgency=high
+
+  * remove PCL dependency
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Thu, 03 Apr 2014 22:00:00 -0000
+
+
