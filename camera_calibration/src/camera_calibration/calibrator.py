@@ -248,9 +248,9 @@ class Calibrator(object):
             _, max_val, _, _ = cv2.minMaxLoc(img)
             if max_val > 0:
                 scale = 255.0 / max_val
-                mono_img = (img * scale).astype(np.uint8)
+                mono_img = (img * scale).astype(numpy.uint8)
             else:
-                mono_img = img.astype(np.uint8)
+                mono_img = img.astype(numpy.uint8)
             return mono_img
         else:
             return self.br.imgmsg_to_cv2(msg, "mono8")
@@ -506,7 +506,7 @@ def image_from_archive(archive, name):
     Used for tarfile loading and unit test.
     """
     member = archive.getmember(name)
-    imagefiledata = numpy.fromstring(archive.extractfile(member).read(-1), numpy.uint8)
+    imagefiledata = numpy.fromstring(archive.extractfile(member).read(), numpy.uint8)
     imagefiledata.resize((1, imagefiledata.size))
     return cv2.imdecode(imagefiledata, cv2.IMREAD_COLOR)
 
