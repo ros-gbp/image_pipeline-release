@@ -1,0 +1,162 @@
+ros-jade-image-view (1.12.17-0utopic) utopic; urgency=high
+
+  * Fix timestamp to get correct fps in video_recorder
+  * Get correct fps in video_recorder.cpp
+  * Do dynamic scaling for float images
+  * Contributors: Kentaro Wada
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sun, 10 Jul 2016 22:00:00 -0000
+
+ros-jade-image-view (1.12.16-0utopic) utopic; urgency=high
+
+  * Remove code for roslib on .cfg files
+    Closes #185 <https://github.com/ros-perception/image_pipeline/issues/185>
+  * add cv::waitKey for opencv3 installed from source to fix freezing issue
+  * when no image is saved, do not save camera info
+    When the images are not recorded because "save_all_image" is false and "save_image_service" is false, the frame count should not be incremented and the camera info should not be written to disk.
+  * Add std_srvs to catkin find_package()
+  * Contributors: Jeremy Kerfs, Jochen Sprickerhof, Kentaro Wada, Krishneel
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Fri, 18 Mar 2016 23:00:00 -0000
+
+ros-jade-image-view (1.12.15-0utopic) utopic; urgency=high
+
+  * simplify the OpenCV dependency
+  * [image_view] Configure do_dynamic_scaling param with dynamic_reconfigure
+  * [image_view] Scale 16UC1 depth image
+  * fix compilation
+  * Extract images which are synchronized with message_filters
+  * [image_view] Show full path when failed to save image
+  * [image_view] Enable to specify transport with arg
+  * [image_view] feedback: no need threading for callback
+  * [image_view/image_view] Make as a node
+  * Added sensor_msgs::Image conversion to cv::Mat from rqt_image_view in
+    order to be able to create videos from kinect depth images (cv_bridge
+    currently doesn't support 16UC1 image encoding).
+    Code adapted from:
+    https://github.com/ros-visualization/rqt_common_plugins/blob/groovy-devel/rqt_image_view/src/rqt_image_view/image_view.cpp
+  * simplify OpenCV3 conversion
+  * use the color conversion for display from cv_bridge
+  * Contributors: Carlos Costa, Kentaro Wada, Vincent Rabaud
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sat, 16 Jan 2016 23:00:00 -0000
+
+ros-jade-image-view (1.12.14-0utopic) utopic; urgency=high
+
+  * reduce the differences between OpenCV2 and 3
+  * do not build GUIs on Android
+    This fixes #137 <https://github.com/ros-perception/image_pipeline/issues/137>
+  * Contributors: Vincent Rabaud
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Tue, 21 Jul 2015 22:00:00 -0000
+
+ros-jade-image-view (1.12.13-0utopic) utopic; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sun, 05 Apr 2015 22:00:00 -0000
+
+ros-jade-image-view (1.12.12-0utopic) utopic; urgency=high
+
+  * Convert function to inline to avoid duplicates with image_transport
+  * Revert "remove GTK dependency"
+    This reverts commit a6e15e796a40385fbbf8da05966aa47d179dcb46.
+    Conflicts:
+    image_view/CMakeLists.txt
+    image_view/src/nodelets/disparity_nodelet.cpp
+    image_view/src/nodes/stereo_view.cpp
+  * Revert "make sure waitKey is called after imshow"
+    This reverts commit d13e3ed6af819459bca221ece779964a74beefac.
+  * Revert "brings back window_thread"
+    This reverts commit 41a655e8e99910c13a3e7f1ebfdd083207cef76f.
+  * Contributors: Gary Servin, Vincent Rabaud
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Tue, 30 Dec 2014 23:00:00 -0000
+
+ros-jade-image-view (1.12.11-0utopic) utopic; urgency=high
+
+  * brings back window_thread
+    This fixes #102 <https://github.com/ros-perception/image_pipeline/issues/102> fully
+  * small optimizations
+  * add the image_transport parameter
+  * Contributors: Vincent Rabaud
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sat, 25 Oct 2014 22:00:00 -0000
+
+ros-jade-image-view (1.12.10-0utopic) utopic; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sat, 27 Sep 2014 22:00:00 -0000
+
+ros-jade-image-view (1.12.9-0utopic) utopic; urgency=high
+
+  * get code to compile with OpenCV3
+    fixes #96 <https://github.com/ros-perception/image_pipeline/issues/96>
+  * Contributors: Vincent Rabaud
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sat, 20 Sep 2014 22:00:00 -0000
+
+ros-jade-image-view (1.12.8-0utopic) utopic; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Mon, 18 Aug 2014 22:00:00 -0000
+
+ros-jade-image-view (1.12.6-0utopic) utopic; urgency=high
+
+  * make sure waitKey is called after imshow
+  * remove GTK dependency
+  * small speedups
+  * Contributors: Vincent Rabaud
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sat, 26 Jul 2014 22:00:00 -0000
+
+ros-jade-image-view (1.12.5-0utopic) utopic; urgency=high
+
+  * image_view: Add depend on gtk2
+  * Contributors: Scott K Logan
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sat, 10 May 2014 22:00:00 -0000
+
+ros-jade-image-view (1.12.4-0utopic) utopic; urgency=high
+
+  * fixes #65 <https://github.com/ros-perception/image_pipeline/issues/65>
+  * Contributors: Vincent Rabaud
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sun, 27 Apr 2014 22:00:00 -0000
+
+ros-jade-image-view (1.12.3-0utopic) utopic; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Fri, 11 Apr 2014 22:00:00 -0000
+
+ros-jade-image-view (1.12.2-0utopic) utopic; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Mon, 07 Apr 2014 22:00:00 -0000
+
+ros-jade-image-view (1.12.1-0utopic) utopic; urgency=high
+
+  * get proper opencv dependency
+  * Contributors: Vincent Rabaud
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sat, 05 Apr 2014 22:00:00 -0000
+
+ros-jade-image-view (1.11.7-0utopic) utopic; urgency=high
+
+  * Added requirement for core.
+  * Contributors: Jonathan J Hunt
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Thu, 27 Mar 2014 23:00:00 -0000
+
+ros-jade-image-view (1.11.3-0utopic) utopic; urgency=high
+
+  * #41: allow image_saver to save image topics
+  * #40: use proper download URL
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sun, 06 Oct 2013 21:21:55 +0200
+
+
