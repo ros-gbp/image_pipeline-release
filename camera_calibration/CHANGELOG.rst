@@ -1,3 +1,9 @@
+1.12.17 (2016-07-11)
+--------------------
+* fix typo np -> numpy
+* fix failing tests
+* Contributors: Shingo Kitagawa, Vincent Rabaud
+
 1.12.16 (2016-03-19)
 --------------------
 * clean OpenCV dependency in package.xml
