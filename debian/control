@@ -1,0 +1,13 @@
+Source: ros-kinetic-image-view
+Section: misc
+Priority: extra
+Maintainer: Vincent Rabaud <vincent.rabaud@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), libgtk2.0-dev, ros-kinetic-camera-calibration-parsers, ros-kinetic-catkin, ros-kinetic-cv-bridge (>= 1.11.10), ros-kinetic-dynamic-reconfigure, ros-kinetic-image-transport, ros-kinetic-message-filters, ros-kinetic-message-generation, ros-kinetic-nodelet, ros-kinetic-rosconsole, ros-kinetic-roscpp, ros-kinetic-rostest, ros-kinetic-sensor-msgs, ros-kinetic-std-srvs, ros-kinetic-stereo-msgs
+Homepage: http://www.ros.org/wiki/image_view
+Standards-Version: 3.9.2
+
+Package: ros-kinetic-image-view
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libgtk2.0-dev, python-opencv, ros-kinetic-camera-calibration-parsers, ros-kinetic-cv-bridge, ros-kinetic-dynamic-reconfigure, ros-kinetic-image-transport, ros-kinetic-message-filters, ros-kinetic-nodelet, ros-kinetic-rosconsole, ros-kinetic-roscpp, ros-kinetic-std-srvs
+Description: A simple viewer for ROS image topics.
+ Includes a specialized viewer for stereo + disparity images.
