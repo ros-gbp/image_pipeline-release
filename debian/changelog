@@ -1,0 +1,10 @@
+ros-indigo-image-publisher (1.12.19-0saucy) saucy; urgency=high
+
+  * add image_publisher
+  * Contributors: Kei Okada
+  * add image_publisher
+  * Contributors: Kei Okada
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sat, 23 Jul 2016 22:00:00 -0000
+
+
