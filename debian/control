@@ -1,0 +1,12 @@
+Source: ros-kinetic-image-pipeline
+Section: misc
+Priority: extra
+Maintainer: Vincent Rabaud <vincent.rabaud@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), ros-kinetic-catkin
+Homepage: http://www.ros.org/wiki/image_pipeline
+Standards-Version: 3.9.2
+
+Package: ros-kinetic-image-pipeline
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-kinetic-camera-calibration, ros-kinetic-depth-image-proc, ros-kinetic-image-proc, ros-kinetic-image-rotate, ros-kinetic-image-view, ros-kinetic-stereo-image-proc
+Description: image_pipeline fills the gap between getting raw images from a camera driver and higher-level vision processing.
