@@ -1,3 +1,8 @@
+1.12.19 (2016-07-24)
+--------------------
+* Fix frames if it is empty to rotate image
+* Contributors: Kentaro Wada
+
 1.12.18 (2016-07-12)
 --------------------
 
