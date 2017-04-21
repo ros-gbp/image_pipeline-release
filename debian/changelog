@@ -1,0 +1,142 @@
+ros-lunar-depth-image-proc (1.12.19-0yakkety) yakkety; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sun, 24 Jul 2016 07:00:00 -0000
+
+ros-lunar-depth-image-proc (1.12.18-0yakkety) yakkety; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Tue, 12 Jul 2016 07:00:00 -0000
+
+ros-lunar-depth-image-proc (1.12.17-0yakkety) yakkety; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Mon, 11 Jul 2016 07:00:00 -0000
+
+ros-lunar-depth-image-proc (1.12.16-0yakkety) yakkety; urgency=high
+
+  * check number of channels before the process
+  * search minimum value with OpenCV
+  * Use OpenCV to be faster
+  * Add a feature for a depth image to crop foremost image
+  * Contributors: Kenta Yonekura
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sat, 19 Mar 2016 07:00:00 -0000
+
+ros-lunar-depth-image-proc (1.12.15-0yakkety) yakkety; urgency=high
+
+  * Add option for exact time sync for point_cloud_xyzrgb
+  * simplify OpenCV3 conversion
+  * Contributors: Kentaro Wada, Vincent Rabaud
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sun, 17 Jan 2016 08:00:00 -0000
+
+ros-lunar-depth-image-proc (1.12.14-0yakkety) yakkety; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Wed, 22 Jul 2015 07:00:00 -0000
+
+ros-lunar-depth-image-proc (1.12.13-0yakkety) yakkety; urgency=high
+
+  * Add radial point cloud processors
+  * Contributors: Hunter Laux
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Mon, 06 Apr 2015 07:00:00 -0000
+
+ros-lunar-depth-image-proc (1.12.12-0yakkety) yakkety; urgency=high
+
+  * adds range_max
+  * exports depth_conversions
+    with convert for xyz PC only
+  * exports DepthTraits
+  * Contributors: enriquefernandez
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Wed, 31 Dec 2014 08:00:00 -0000
+
+ros-lunar-depth-image-proc (1.12.11-0yakkety) yakkety; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sun, 26 Oct 2014 07:00:00 -0000
+
+ros-lunar-depth-image-proc (1.12.10-0yakkety) yakkety; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sun, 28 Sep 2014 07:00:00 -0000
+
+ros-lunar-depth-image-proc (1.12.9-0yakkety) yakkety; urgency=high
+
+  * get code to compile with OpenCV3
+    fixes #96 <https://github.com/ros-perception/image_pipeline/issues/96>
+  * Contributors: Vincent Rabaud
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sun, 21 Sep 2014 07:00:00 -0000
+
+ros-lunar-depth-image-proc (1.12.8-0yakkety) yakkety; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Tue, 19 Aug 2014 07:00:00 -0000
+
+ros-lunar-depth-image-proc (1.12.6-0yakkety) yakkety; urgency=high
+
+  * Add point_cloud_xyzi nodelet
+    This is for cameras that output depth and intensity images.
+    It's based on the point_cloud_xyzrgb nodelet.
+  * Missing runtime dependency - eigen_conversions
+    libdepth_image_proc is missing this dependency at runtime
+    ```
+    > ldd libdepth_image_proc.so  | grep eigen
+    libeigen_conversions.so => not found
+    ```
+    Which causes the following error on loading depth_image_proc:
+    ```
+    [ INFO] [1402564815.530736554]: /camera/rgb/camera_info -> /camera/rgb/camera_info
+    [ERROR] [1402564815.727176562]: Failed to load nodelet [/camera/depth_metric_rect] of type
+    [depth_image_proc/convert_metric]: Failed to load library /opt/ros/indigo/lib//libdepth_image_proc.so.
+    Make sure that you are calling the PLUGINLIB_EXPORT_CLASS macro in the library code, and that
+    names are consistent between this macro and your XML. Error string: Could not load library (Poco
+    exception = libeigen_conversions.so: cannot open shared object file: No such file or directory)
+    [FATAL] [1402564815.727410623]: Service call failed!
+    ```
+  * Contributors: Daniel Stonier, Hunter Laux
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sun, 27 Jul 2014 07:00:00 -0000
+
+ros-lunar-depth-image-proc (1.12.4-0yakkety) yakkety; urgency=high
+
+  * depth_image_proc: fix missing symbols in nodelets
+  * Contributors: Michael Ferguson
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Mon, 28 Apr 2014 07:00:00 -0000
+
+ros-lunar-depth-image-proc (1.12.3-0yakkety) yakkety; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sat, 12 Apr 2014 07:00:00 -0000
+
+ros-lunar-depth-image-proc (1.12.2-0yakkety) yakkety; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Tue, 08 Apr 2014 07:00:00 -0000
+
+ros-lunar-depth-image-proc (1.12.1-0yakkety) yakkety; urgency=high
+
+  * replace tf usage by tf2 usage
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sun, 06 Apr 2014 07:00:00 -0000
+
+ros-lunar-depth-image-proc (1.12.0-0yakkety) yakkety; urgency=high
+
+  * remove PCL dependency
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Fri, 04 Apr 2014 07:00:00 -0000
+
+
