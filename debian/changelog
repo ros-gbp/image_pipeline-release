@@ -1,0 +1,122 @@
+ros-lunar-stereo-image-proc (1.12.19-0zesty) zesty; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sun, 24 Jul 2016 07:00:00 -0000
+
+ros-lunar-stereo-image-proc (1.12.18-0zesty) zesty; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Tue, 12 Jul 2016 07:00:00 -0000
+
+ros-lunar-stereo-image-proc (1.12.17-0zesty) zesty; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Mon, 11 Jul 2016 07:00:00 -0000
+
+ros-lunar-stereo-image-proc (1.12.16-0zesty) zesty; urgency=high
+
+  * clean OpenCV dependency in package.xml
+  * Contributors: Vincent Rabaud
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sat, 19 Mar 2016 07:00:00 -0000
+
+ros-lunar-stereo-image-proc (1.12.15-0zesty) zesty; urgency=high
+
+  * simplify OpenCV3 conversion
+  * Contributors: Vincent Rabaud
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sun, 17 Jan 2016 08:00:00 -0000
+
+ros-lunar-stereo-image-proc (1.12.14-0zesty) zesty; urgency=high
+
+  * add StereoSGBM and it can be chosen from dynamic_reconfigure
+  * Contributors: Ryohei Ueda
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Wed, 22 Jul 2015 07:00:00 -0000
+
+ros-lunar-stereo-image-proc (1.12.13-0zesty) zesty; urgency=high
+
+  * get code to compile with OpenCV3
+  * modify pointcloud data format of stereo_image_proc using point_cloud2_iterator
+  * Contributors: Hiroaki Yaguchi, Vincent Rabaud
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Mon, 06 Apr 2015 07:00:00 -0000
+
+ros-lunar-stereo-image-proc (1.12.12-0zesty) zesty; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Wed, 31 Dec 2014 08:00:00 -0000
+
+ros-lunar-stereo-image-proc (1.12.11-0zesty) zesty; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sun, 26 Oct 2014 07:00:00 -0000
+
+ros-lunar-stereo-image-proc (1.12.10-0zesty) zesty; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sun, 28 Sep 2014 07:00:00 -0000
+
+ros-lunar-stereo-image-proc (1.12.9-0zesty) zesty; urgency=high
+
+  * get code to compile with OpenCV3
+    fixes #96 <https://github.com/ros-perception/image_pipeline/issues/96>
+  * Contributors: Vincent Rabaud
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sun, 21 Sep 2014 07:00:00 -0000
+
+ros-lunar-stereo-image-proc (1.12.8-0zesty) zesty; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Tue, 19 Aug 2014 07:00:00 -0000
+
+ros-lunar-stereo-image-proc (1.12.6-0zesty) zesty; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sun, 27 Jul 2014 07:00:00 -0000
+
+ros-lunar-stereo-image-proc (1.12.4-0zesty) zesty; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Mon, 28 Apr 2014 07:00:00 -0000
+
+ros-lunar-stereo-image-proc (1.12.3-0zesty) zesty; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sat, 12 Apr 2014 07:00:00 -0000
+
+ros-lunar-stereo-image-proc (1.12.2-0zesty) zesty; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Tue, 08 Apr 2014 07:00:00 -0000
+
+ros-lunar-stereo-image-proc (1.12.0-0zesty) zesty; urgency=high
+
+  * remove PointCloud1 nodelets
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Fri, 04 Apr 2014 07:00:00 -0000
+
+ros-lunar-stereo-image-proc (1.11.5-0zesty) zesty; urgency=high
+
+  * fix compilation on OSX (#50)
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sat, 07 Dec 2013 13:42:55 -0800
+
+ros-lunar-stereo-image-proc (1.11.4-0zesty) zesty; urgency=high
+
+  * convert images to MONO8 when computing disparity if needed (#49)
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sat, 23 Nov 2013 13:10:55 -0800
+
+
