@@ -2,6 +2,11 @@
 Changelog for package image_pipeline
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.12.20 (2017-04-30)
+--------------------
+* Update package.xml (`#263 <https://github.com/ros-perception/image_pipeline/issues/263>`_)
+* Contributors: Kei Okada
+
 1.12.19 (2016-07-24)
 --------------------
 
