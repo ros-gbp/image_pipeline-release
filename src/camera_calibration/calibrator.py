@@ -36,6 +36,7 @@ try:
     from cStringIO import StringIO
 except ImportError:
     from io import StringIO
+from io import BytesIO
 import cv2
 import cv_bridge
 import image_geometry
@@ -152,6 +153,10 @@ def _get_corners(img, board, refine = True, checkerboard_flags=0):
     BORDER = 8
     if not all([(BORDER < corners[i, 0, 0] < (w - BORDER)) and (BORDER < corners[i, 0, 1] < (h - BORDER)) for i in range(corners.shape[0])]):
         ok = False
+
+    # Ensure that all corner-arrays are going from top to bottom.
+    if corners[0, 0, 1] > corners[-1, 0, 1]:
+        corners = numpy.copy(numpy.flipud(corners))
 
     if refine and ok:
         # Use a radius of half the minimum distance between corners. This should be large enough to snap to the
@@ -782,7 +787,10 @@ class MonoCalibrator(Calibrator):
         """ Write images and calibration solution to a tarfile object """
 
         def taradd(name, buf):
-            s = StringIO(buf)
+            if isinstance(buf, basestring):
+                s = StringIO(buf)
+            else:
+                s = BytesIO(buf)
             ti = tarfile.TarInfo(name)
             ti.size = len(s.getvalue())
             ti.uname = 'calibrator'
@@ -1052,7 +1060,7 @@ class StereoCalibrator(Calibrator):
                 cv2.drawChessboardCorners(rscrib, (rboard.n_cols, rboard.n_rows), scrib_src, True)
 
             # Report epipolar error
-            if lcorners is not None and rcorners is not None:
+            if lcorners is not None and rcorners is not None and len(lcorners) == len(rcorners):
                 epierror = self.epipolar_error(lundistorted, rundistorted)
 
         else:
@@ -1067,7 +1075,7 @@ class StereoCalibrator(Calibrator):
                                          rdownsampled_corners, True)
 
             # Add sample to database only if it's sufficiently different from any previous sample
-            if lcorners is not None and rcorners is not None:
+            if lcorners is not None and rcorners is not None and len(lcorners) == len(rcorners):
                 params = self.get_parameters(lcorners, lboard, (lgray.shape[1], lgray.shape[0]))
                 if self.is_good_sample(params):
                     self.db.append( (params, lgray, rgray) )
@@ -1102,7 +1110,10 @@ class StereoCalibrator(Calibrator):
                [("right-%04d.png" % i, im) for i,(_, _, im) in enumerate(self.db)])
 
         def taradd(name, buf):
-            s = StringIO(buf)
+            if isinstance(buf, basestring):
+                s = StringIO(buf)
+            else:
+                s = BytesIO(buf)
             ti = tarfile.TarInfo(name)
             ti.size = len(s.getvalue())
             ti.uname = 'calibrator'
