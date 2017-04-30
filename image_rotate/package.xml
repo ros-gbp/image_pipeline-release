@@ -1,6 +1,6 @@
 <package>
   <name>image_rotate</name>
-  <version>1.12.19</version>
+  <version>1.12.20</version>
   <description>
     <p>
       Contains a node that rotates an image stream in a way that minimizes
@@ -33,7 +33,6 @@
   <build_depend>cmake_modules</build_depend>
   <build_depend>cv_bridge</build_depend>
   <build_depend>dynamic_reconfigure</build_depend>
-  <build_depend>eigen_conversions</build_depend>
   <build_depend>geometry_msgs</build_depend>
   <build_depend>image_transport</build_depend>
   <build_depend>nodelet</build_depend>
