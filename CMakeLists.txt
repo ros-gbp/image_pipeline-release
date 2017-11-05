@@ -4,6 +4,10 @@ project(stereo_image_proc)
 find_package(catkin REQUIRED cv_bridge dynamic_reconfigure image_geometry image_proc image_transport message_filters nodelet sensor_msgs stereo_msgs)
 find_package(Boost REQUIRED COMPONENTS thread)
 
+if(cv_bridge_VERSION VERSION_GREATER "1.12.0")
+  add_compile_options(-std=c++11)
+endif()
+
 # Dynamic reconfigure support
 generate_dynamic_reconfigure_options(cfg/Disparity.cfg)
 
@@ -17,6 +21,9 @@ include_directories(include)
 
 find_package(OpenCV REQUIRED)
 include_directories(${catkin_INCLUDE_DIRS} ${OpenCV_INCLUDE_DIRS})
+
+# See note in image_proc/CMakeLists.txt
+add_definitions(-DOPENCV_TRAITS_ENABLE_DEPRECATED)
 
 # Nodelet library
 add_library(${PROJECT_NAME} src/libstereo_image_proc/processor.cpp src/nodelets/disparity.cpp src/nodelets/point_cloud2.cpp)
