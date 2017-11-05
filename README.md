@@ -1,3 +1,37 @@
+## image_pipeline (kinetic) - 1.12.21-0
+
+The packages in the `image_pipeline` repository were released into the `kinetic` distro by running `/usr/bin/bloom-release --rosdistro kinetic --track kinetic image_pipeline` on `Sun, 05 Nov 2017 18:08:51 -0000`
+
+These packages were released:
+- `camera_calibration`
+- `depth_image_proc`
+- `image_pipeline`
+- `image_proc`
+- `image_publisher`
+- `image_rotate`
+- `image_view`
+- `stereo_image_proc`
+
+These packages were explicitly ignored:
+- `wiki_files`
+
+Version of package(s) in repository `image_pipeline`:
+
+- upstream repository: https://github.com/ros-perception/image_pipeline.git
+- release repository: https://github.com/ros-gbp/image_pipeline-release.git
+- rosdistro version: `1.12.20-0`
+- old version: `1.12.20-0`
+- new version: `1.12.21-0`
+
+Versions of tools used:
+
+- bloom version: `0.6.1`
+- catkin_pkg version: `0.3.9`
+- rosdep version: `0.11.8`
+- rosdistro version: `0.6.2`
+- vcstools version: `0.1.39`
+
+
 ## image_pipeline (indigo) - 1.12.21-0
 
 The packages in the `image_pipeline` repository were released into the `indigo` distro by running `/usr/bin/bloom-release --rosdistro indigo --track indigo image_pipeline` on `Sun, 05 Nov 2017 17:53:01 -0000`
