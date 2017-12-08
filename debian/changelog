@@ -1,0 +1,122 @@
+ros-kinetic-image-pipeline (1.12.22-0jessie) jessie; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Fri, 08 Dec 2017 08:00:00 -0000
+
+ros-kinetic-image-pipeline (1.12.21-0jessie) jessie; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sun, 05 Nov 2017 07:00:00 -0000
+
+ros-kinetic-image-pipeline (1.12.20-0jessie) jessie; urgency=high
+
+  * Update package.xml (#263 <https://github.com/ros-perception/image_pipeline/issues/263>)
+  * Contributors: Kei Okada
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sun, 30 Apr 2017 07:00:00 -0000
+
+ros-kinetic-image-pipeline (1.12.19-0jessie) jessie; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sun, 24 Jul 2016 07:00:00 -0000
+
+ros-kinetic-image-pipeline (1.12.18-0jessie) jessie; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Tue, 12 Jul 2016 07:00:00 -0000
+
+ros-kinetic-image-pipeline (1.12.17-0jessie) jessie; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Mon, 11 Jul 2016 07:00:00 -0000
+
+ros-kinetic-image-pipeline (1.12.16-0jessie) jessie; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sat, 19 Mar 2016 07:00:00 -0000
+
+ros-kinetic-image-pipeline (1.12.15-0jessie) jessie; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sun, 17 Jan 2016 08:00:00 -0000
+
+ros-kinetic-image-pipeline (1.12.14-0jessie) jessie; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Wed, 22 Jul 2015 07:00:00 -0000
+
+ros-kinetic-image-pipeline (1.12.13-0jessie) jessie; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Mon, 06 Apr 2015 07:00:00 -0000
+
+ros-kinetic-image-pipeline (1.12.12-0jessie) jessie; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Wed, 31 Dec 2014 08:00:00 -0000
+
+ros-kinetic-image-pipeline (1.12.11-0jessie) jessie; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sun, 26 Oct 2014 07:00:00 -0000
+
+ros-kinetic-image-pipeline (1.12.10-0jessie) jessie; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sun, 28 Sep 2014 07:00:00 -0000
+
+ros-kinetic-image-pipeline (1.12.9-0jessie) jessie; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sun, 21 Sep 2014 07:00:00 -0000
+
+ros-kinetic-image-pipeline (1.12.8-0jessie) jessie; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Tue, 19 Aug 2014 07:00:00 -0000
+
+ros-kinetic-image-pipeline (1.12.6-0jessie) jessie; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sun, 27 Jul 2014 07:00:00 -0000
+
+ros-kinetic-image-pipeline (1.12.4-0jessie) jessie; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Mon, 28 Apr 2014 07:00:00 -0000
+
+ros-kinetic-image-pipeline (1.12.3-0jessie) jessie; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sat, 12 Apr 2014 07:00:00 -0000
+
+ros-kinetic-image-pipeline (1.12.2-0jessie) jessie; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Tue, 08 Apr 2014 07:00:00 -0000
+
+ros-kinetic-image-pipeline (1.11.7-0jessie) jessie; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Fri, 28 Mar 2014 07:00:00 -0000
+
+
