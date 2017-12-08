@@ -1,3 +1,6 @@
+1.12.22 (2017-12-08)
+--------------------
+
 1.12.21 (2017-11-05)
 --------------------
 * Updated fix for traits change. (`#303 <https://github.com/ros-perception/image_pipeline/issues/303>`_)
