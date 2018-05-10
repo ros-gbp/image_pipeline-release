@@ -1,3 +1,9 @@
+1.12.23 (2018-05-10)
+--------------------
+
+1.12.22 (2017-12-08)
+--------------------
+
 1.12.21 (2017-11-05)
 --------------------
 * call namedWindow from same thread as imshow, need waitKay, now cvStartWindowThreads is null funciton on window_QT.h (`#279 <https://github.com/ros-perception/image_pipeline/issues/279>`_)
