@@ -1,3 +1,37 @@
+## image_pipeline (melodic) - 1.12.23-0
+
+The packages in the `image_pipeline` repository were released into the `melodic` distro by running `/usr/bin/bloom-release --rosdistro melodic --track melodic image_pipeline` on `Thu, 10 May 2018 13:42:15 -0000`
+
+These packages were released:
+- `camera_calibration`
+- `depth_image_proc`
+- `image_pipeline`
+- `image_proc`
+- `image_publisher`
+- `image_rotate`
+- `image_view`
+- `stereo_image_proc`
+
+These packages were explicitly ignored:
+- `wiki_files`
+
+Version of package(s) in repository `image_pipeline`:
+
+- upstream repository: https://github.com/ros-perception/image_pipeline.git
+- release repository: unknown
+- rosdistro version: `null`
+- old version: `null`
+- new version: `1.12.23-0`
+
+Versions of tools used:
+
+- bloom version: `0.6.4`
+- catkin_pkg version: `0.4.2`
+- rosdep version: `0.12.2`
+- rosdistro version: `0.6.8`
+- vcstools version: `0.1.40`
+
+
 ## image_pipeline (lunar) - 1.12.23-0
 
 The packages in the `image_pipeline` repository were released into the `lunar` distro by running `/usr/bin/bloom-release --rosdistro lunar --track lunar image_pipeline` on `Thu, 10 May 2018 13:28:22 -0000`
