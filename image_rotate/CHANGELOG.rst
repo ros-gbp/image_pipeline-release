@@ -1,3 +1,9 @@
+1.12.23 (2018-05-10)
+--------------------
+
+1.12.22 (2017-12-08)
+--------------------
+
 1.12.21 (2017-11-05)
 --------------------
 * [image_rotate] Added TF timeout so that transforms only need to be newer than last frame. (`#293 <https://github.com/ros-perception/image_pipeline/issues/293>`_)
