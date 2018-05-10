@@ -1,0 +1,12 @@
+Source: ros-lunar-image-proc
+Section: misc
+Priority: extra
+Maintainer: Vincent Rabaud <vincent.rabaud@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), libboost-all-dev, ros-lunar-camera-calibration-parsers, ros-lunar-catkin (>= 0.5.68), ros-lunar-cv-bridge, ros-lunar-dynamic-reconfigure, ros-lunar-image-geometry, ros-lunar-image-transport, ros-lunar-nodelet, ros-lunar-nodelet-topic-tools, ros-lunar-roscpp, ros-lunar-rostest, ros-lunar-sensor-msgs
+Homepage: http://www.ros.org/wiki/image_proc
+Standards-Version: 3.9.2
+
+Package: ros-lunar-image-proc
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-lunar-cv-bridge, ros-lunar-dynamic-reconfigure, ros-lunar-image-geometry, ros-lunar-image-transport, ros-lunar-nodelet, ros-lunar-nodelet-topic-tools, ros-lunar-roscpp, ros-lunar-sensor-msgs
+Description: Single image rectification and color processing.
