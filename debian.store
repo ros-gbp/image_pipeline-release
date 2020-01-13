@@ -1,1 +1,1 @@
-{"trim": "", "base": "37b43742", "trimbase": "", "parent": "debian/melodic/image_publisher", "previous": "ca78e554"}
+{"base": "8b8b1301", "parent": "debian/melodic/image_publisher", "previous": "78d3d497", "trim": "", "trimbase": ""}
