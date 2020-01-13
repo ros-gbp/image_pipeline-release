@@ -1,3 +1,6 @@
+1.14.0 (2020-01-12)
+-------------------
+
 1.13.0 (2019-06-12)
 -------------------
 * Merge pull request `#382 <https://github.com/ros-perception/image_pipeline/issues/382>`_ from garaemon/intiialzie-prev-stamp
