@@ -32,7 +32,6 @@
 # ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 
-from __future__ import print_function
 import cv2
 import message_filters
 import numpy
@@ -47,7 +46,7 @@ try:
     from queue import Queue
 except ImportError:
     from Queue import Queue
-from calibrator import CAMERA_MODEL
+from camera_calibration.calibrator import CAMERA_MODEL
 
 class BufferQueue(Queue):
     """Slight modification of the standard Queue that discards the oldest item
