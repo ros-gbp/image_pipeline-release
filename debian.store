@@ -1,1 +1,1 @@
-{"trim": "", "base": "0fd35cac", "trimbase": "", "parent": "debian/noetic/stereo_image_proc", "previous": "5fe95cea"}
+{"base": "24a41ba1", "parent": "debian/noetic/stereo_image_proc", "previous": "98f2e36d", "trim": "", "trimbase": ""}
