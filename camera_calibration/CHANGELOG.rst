@@ -1,3 +1,6 @@
+1.15.1 (2020-05-18)
+-------------------
+
 1.15.0 (2020-05-14)
 -------------------
 * Python 3 compatibility (`#530 <https://github.com/ros-perception/image_pipeline/issues/530>`_)
