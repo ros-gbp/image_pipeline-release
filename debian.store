@@ -1,1 +1,1 @@
-{"base": "917c379c", "parent": "debian/noetic/image_rotate", "previous": "803c8794", "trim": "", "trimbase": ""}
+{"trim": "", "base": "bcaff5a5", "trimbase": "", "parent": "debian/noetic/image_rotate", "previous": "f79489a8"}
