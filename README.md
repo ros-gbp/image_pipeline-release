@@ -1,3 +1,37 @@
+## image_pipeline (noetic) - 1.16.0-1
+
+The packages in the `image_pipeline` repository were released into the `noetic` distro by running `/usr/bin/bloom-release --ros-distro noetic --track noetic image_pipeline` on `Fri, 12 Nov 2021 17:50:48 -0000`
+
+These packages were released:
+- `camera_calibration`
+- `depth_image_proc`
+- `image_pipeline`
+- `image_proc`
+- `image_publisher`
+- `image_rotate`
+- `image_view`
+- `stereo_image_proc`
+
+These packages were explicitly ignored:
+- `wiki_files`
+
+Version of package(s) in repository `image_pipeline`:
+
+- upstream repository: https://github.com/ros-perception/image_pipeline.git
+- release repository: https://github.com/ros-gbp/image_pipeline-release.git
+- rosdistro version: `1.15.3-1`
+- old version: `1.15.3-1`
+- new version: `1.16.0-1`
+
+Versions of tools used:
+
+- bloom version: `0.10.7`
+- catkin_pkg version: `0.4.23`
+- rosdep version: `0.21.0`
+- rosdistro version: `0.8.3`
+- vcstools version: `0.1.42`
+
+
 ## image_pipeline (noetic) - 1.15.3-1
 
 The packages in the `image_pipeline` repository were released into the `noetic` distro by running `/usr/bin/bloom-release --ros-distro noetic --track noetic image_pipeline` on `Fri, 11 Dec 2020 19:47:35 -0000`
