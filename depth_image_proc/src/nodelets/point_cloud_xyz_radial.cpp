@@ -36,7 +36,6 @@
 #include <image_transport/image_transport.h>
 #include <sensor_msgs/image_encodings.h>
 #include <image_geometry/pinhole_camera_model.h>
-#include <opencv2/calib3d/calib3d.hpp>
 #include <boost/thread.hpp>
 #include <depth_image_proc/depth_traits.h>
 

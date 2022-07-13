@@ -36,7 +36,6 @@
 
 #include <image_proc/processor.h>
 #include <image_geometry/stereo_camera_model.h>
-#include <opencv2/calib3d/calib3d.hpp>
 #include <stereo_msgs/DisparityImage.h>
 #include <sensor_msgs/PointCloud.h>
 #include <sensor_msgs/PointCloud2.h>
