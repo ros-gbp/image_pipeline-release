@@ -1,13 +1,32 @@
-1.15.2 (2022-07-13)
+1.17.0 (2022-10-17)
+-------------------
+* Switch to hpp headers of pluginlib
+* Fix tf2 dependency for image_rotate
+* Switch to new boost/bind/bind.hpp
+* Contributors: Jochen Sprickerhof, Timo Röhling
+
+1.16.0 (2021-11-12)
 -------------------
 
-1.15.1 (2020-12-11)
+1.15.3 (2020-12-11)
+-------------------
+* remove email blasts from steve macenski (`#595 <https://github.com/ros-perception/image_pipeline/issues/595>`_)
+* Contributors: Steve Macenski
+
+1.15.2 (2020-05-19)
 -------------------
 
-1.15.0 (2020-05-18)
+1.15.1 (2020-05-18)
 -------------------
+
+1.15.0 (2020-05-14)
+-------------------
+* Python 3 compatibility (`#530 <https://github.com/ros-perception/image_pipeline/issues/530>`_)
+* cmake_minimum_required to 3.0.2
+* Adapted to OpenCV4
+* import setup from setuptools instead of distutils-core
 * updated install locations for better portability. (`#500 <https://github.com/ros-perception/image_pipeline/issues/500>`_)
-* Contributors: Sean Yen
+* Contributors: Joshua Whitley, Sean Yen
 
 1.14.0 (2020-01-12)
 -------------------

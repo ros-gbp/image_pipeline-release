@@ -32,11 +32,6 @@
 # ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 
-from __future__ import print_function
-try:
-    from cStringIO import StringIO
-except ImportError:
-    from io import StringIO
 from io import BytesIO
 import cv2
 import cv_bridge
@@ -65,7 +60,7 @@ class CalibrationException(Exception):
     pass
 
 # TODO: Make pattern per-board?
-class ChessboardInfo(object):
+class ChessboardInfo():
     def __init__(self, pattern="chessboard", n_cols = 0, n_rows = 0, dim = 0.0, marker_size = 0.0, aruco_dict = None):
         self.pattern = pattern
         self.n_cols = n_cols
@@ -300,13 +295,13 @@ def _get_dist_model(dist_params, cam_model):
         else:
             dist_model = "plumb_bob"
     elif CAMERA_MODEL.FISHEYE == cam_model:
-        dist_model = "fisheye"
+        dist_model = "equidistant"
     else:
         dist_model = "unknown"
     return dist_model
 
 # TODO self.size needs to come from CameraInfo, full resolution
-class Calibrator(object):
+class Calibrator():
     """
     Base class for calibration system
     """
@@ -474,7 +469,7 @@ class Calibrator(object):
             num_pts = b.n_cols * b.n_rows
             opts_loc = numpy.zeros((num_pts, 1, 3), numpy.float32)
             for j in range(num_pts):
-                opts_loc[j, 0, 0] = (j / b.n_cols)
+                opts_loc[j, 0, 0] = (j // b.n_cols)
                 if self.pattern == Patterns.ACircles:
                     opts_loc[j, 0, 1] = 2*(j % b.n_cols) + (opts_loc[j, 0, 0] % 2)
                 else:
@@ -689,7 +684,7 @@ def image_from_archive(archive, name):
     imagefiledata.resize((1, imagefiledata.size))
     return cv2.imdecode(imagefiledata, cv2.IMREAD_COLOR)
 
-class ImageDrawable(object):
+class ImageDrawable():
     """
     Passed to CalibrationNode after image handled. Allows plotting of images
     with detected corner points
@@ -758,6 +753,8 @@ class MonoCalibrator(Calibrator):
         """
         :param good: Good corner positions and boards
         :type good: [(corners, ChessboardInfo)]
+
+
         """
 
         (ipts, ids, boards) = zip(*good)
@@ -1019,8 +1016,8 @@ class MonoCalibrator(Calibrator):
         """ Write images and calibration solution to a tarfile object """
 
         def taradd(name, buf):
-            if isinstance(buf, basestring):
-                s = StringIO(buf)
+            if isinstance(buf, str):
+                s = BytesIO(buf.encode('utf-8'))
             else:
                 s = BytesIO(buf)
             ti = tarfile.TarInfo(name)
@@ -1410,8 +1407,8 @@ class StereoCalibrator(Calibrator):
                [("right-%04d.png" % i, im) for i,(_, _, im) in enumerate(self.db)])
 
         def taradd(name, buf):
-            if isinstance(buf, basestring):
-                s = StringIO(buf)
+            if isinstance(buf, str):
+                s = BytesIO(buf.encode('utf-8'))
             else:
                 s = BytesIO(buf)
             ti = tarfile.TarInfo(name)

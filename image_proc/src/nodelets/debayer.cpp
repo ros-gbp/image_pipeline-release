@@ -88,7 +88,7 @@ void DebayerNodelet::onInit()
 
   // Set up dynamic reconfigure
   reconfigure_server_.reset(new ReconfigureServer(config_mutex_, private_nh));
-  ReconfigureServer::CallbackType f = boost::bind(&DebayerNodelet::configCb, this, _1, _2);
+  ReconfigureServer::CallbackType f = boost::bind(&DebayerNodelet::configCb, this, boost::placeholders::_1, boost::placeholders::_2);
   reconfigure_server_->setCallback(f);
 
   // Monitor whether anyone is subscribed to the output
@@ -123,7 +123,7 @@ void DebayerNodelet::imageCb(const sensor_msgs::ImageConstPtr& raw_msg)
   // First publish to mono if needed
   if (pub_mono_.getNumSubscribers())
   {
-    if (enc::isMono(raw_msg->encoding) || raw_msg->encoding == enc::TYPE_32FC1)
+    if (enc::isMono(raw_msg->encoding))
       pub_mono_.publish(raw_msg);
     else
     {
@@ -156,7 +156,7 @@ void DebayerNodelet::imageCb(const sensor_msgs::ImageConstPtr& raw_msg)
   if (!pub_color_.getNumSubscribers())
     return;
 
-  if (enc::isMono(raw_msg->encoding) || raw_msg->encoding == enc::TYPE_32FC1)
+  if (enc::isMono(raw_msg->encoding))
   {
     // For monochrome, no processing needed!
     pub_color_.publish(raw_msg);
@@ -281,5 +281,5 @@ void DebayerNodelet::configCb(Config &config, uint32_t level)
 } // namespace image_proc
 
 // Register nodelet
-#include <pluginlib/class_list_macros.h>
+#include <pluginlib/class_list_macros.hpp>
 PLUGINLIB_EXPORT_CLASS( image_proc::DebayerNodelet, nodelet::Nodelet)

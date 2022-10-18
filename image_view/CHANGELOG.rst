@@ -1,18 +1,45 @@
-1.15.2 (2022-07-13)
+1.17.0 (2022-10-17)
+-------------------
+* Switch to hpp headers of pluginlib
+* Switch to new boost/bind/bind.hpp
+* Add support for floating point fps
+* Contributors: Jochen Sprickerhof, Júnio Eduardo de Morais Aquino
+
+1.16.0 (2021-11-12)
+-------------------
+* remove GTK3 dep.
+* remove harfbuzz.
+* Update image_view/CMakeLists.txt
+  Co-authored-by: Joshua Whitley <josh.whitley@autoware.org>
+* Update image_view/CMakeLists.txt
+  Co-authored-by: Joshua Whitley <josh.whitley@autoware.org>
+* Make GTK3 and harfbuzz optional
+* Contributors: Sean Yen, seanyen
+
+1.15.3 (2020-12-11)
+-------------------
+* remove email blasts from steve macenski (`#595 <https://github.com/ros-perception/image_pipeline/issues/595>`_)
+* [image_view] Warn when filename_format is invalid (`#587 <https://github.com/ros-perception/image_pipeline/issues/587>`_)
+* Contributors: Naoya Yamaguchi, Steve Macenski
+
+1.15.2 (2020-05-19)
 -------------------
 
-1.15.1 (2020-12-11)
+1.15.1 (2020-05-18)
 -------------------
-* [image_view] Warn when filename_format is invalid (`#586 <https://github.com/ros-perception/image_pipeline/issues/586>`_)
-* Contributors: Naoya Yamaguchi
+* image_view: add missing dependency to gencfg header (`#531 <https://github.com/ros-perception/image_pipeline/issues/531>`_)
+* Contributors: Atsushi Watanabe
 
-1.15.0 (2020-05-18)
+1.15.0 (2020-05-14)
 -------------------
-* image_view: add missing dependency to gencfg header (`#532 <https://github.com/ros-perception/image_pipeline/issues/532>`_)
-* clone cv_ptr->image before set queued_image (`#526 <https://github.com/ros-perception/image_pipeline/issues/526>`_)
+* Python 3 compatibility (`#530 <https://github.com/ros-perception/image_pipeline/issues/530>`_)
+* cmake_minimum_required to 3.0.2
+* Adapted to OpenCV4
+* import setup from setuptools instead of distutils-core
+* Apply `#509 <https://github.com/ros-perception/image_pipeline/issues/509>`_ and `#526 <https://github.com/ros-perception/image_pipeline/issues/526>`_ to Noetic Branch (`#528 <https://github.com/ros-perception/image_pipeline/issues/528>`_)
 * [image_view] Add dynamic reconfigure to image_nodelet.cpp in melodic (`#504 <https://github.com/ros-perception/image_pipeline/issues/504>`_)
 * updated install locations for better portability. (`#500 <https://github.com/ros-perception/image_pipeline/issues/500>`_)
-* Contributors: Atsushi Watanabe, Kei Okada, Naoya Yamaguchi, Sean Yen
+* Contributors: Joshua Whitley, Naoya Yamaguchi, Sean Yen
 
 1.14.0 (2020-01-12)
 -------------------

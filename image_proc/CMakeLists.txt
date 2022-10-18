@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.0.2)
 project(image_proc)
 
 find_package(catkin REQUIRED)
@@ -6,10 +6,6 @@ find_package(catkin REQUIRED)
 find_package(catkin REQUIRED cv_bridge dynamic_reconfigure image_geometry image_transport nodelet nodelet_topic_tools roscpp sensor_msgs)
 find_package(OpenCV REQUIRED)
 find_package(Boost REQUIRED COMPONENTS thread)
-
-if(cv_bridge_VERSION VERSION_GREATER "1.12.0")
-  add_compile_options(-std=c++11)
-endif()
 
 # Dynamic reconfigure support
 generate_dynamic_reconfigure_options(cfg/CropDecimate.cfg cfg/Debayer.cfg cfg/Rectify.cfg cfg/Resize.cfg)
