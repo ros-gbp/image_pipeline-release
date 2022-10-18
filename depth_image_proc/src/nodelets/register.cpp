@@ -105,7 +105,7 @@ void RegisterNodelet::onInit()
 
   // Synchronize inputs. Topic subscriptions happen on demand in the connection callback.
   sync_.reset( new Synchronizer(SyncPolicy(queue_size), sub_depth_image_, sub_depth_info_, sub_rgb_info_) );
-  sync_->registerCallback(boost::bind(&RegisterNodelet::imageCb, this, _1, _2, _3));
+  sync_->registerCallback(boost::bind(&RegisterNodelet::imageCb, this, boost::placeholders::_1, boost::placeholders::_2, boost::placeholders::_3));
 
   // Monitor whether anyone is subscribed to the output
   image_transport::ImageTransport it_depth_reg(ros::NodeHandle(nh, "depth_registered"));
@@ -307,5 +307,5 @@ void RegisterNodelet::convert(const sensor_msgs::ImageConstPtr& depth_msg,
 } // namespace depth_image_proc
 
 // Register as nodelet
-#include <pluginlib/class_list_macros.h>
+#include <pluginlib/class_list_macros.hpp>
 PLUGINLIB_EXPORT_CLASS(depth_image_proc::RegisterNodelet,nodelet::Nodelet);
