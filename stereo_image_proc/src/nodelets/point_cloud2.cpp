@@ -108,7 +108,7 @@ void PointCloud2Nodelet::onInit()
                                                  sub_l_image_, sub_l_info_,
                                                  sub_r_info_, sub_disparity_) );
     approximate_sync_->registerCallback(boost::bind(&PointCloud2Nodelet::imageCb,
-                                                    this, _1, _2, _3, _4));
+                                                    this, boost::placeholders::_1, boost::placeholders::_2, boost::placeholders::_3, boost::placeholders::_4));
   }
   else
   {
@@ -116,7 +116,7 @@ void PointCloud2Nodelet::onInit()
                                      sub_l_image_, sub_l_info_,
                                      sub_r_info_, sub_disparity_) );
     exact_sync_->registerCallback(boost::bind(&PointCloud2Nodelet::imageCb,
-                                              this, _1, _2, _3, _4));
+                                              this, boost::placeholders::_1, boost::placeholders::_2, boost::placeholders::_3, boost::placeholders::_4));
   }
 
   // Monitor whether anyone is subscribed to the output
@@ -300,5 +300,5 @@ void PointCloud2Nodelet::imageCb(const ImageConstPtr& l_image_msg,
 } // namespace stereo_image_proc
 
 // Register nodelet
-#include <pluginlib/class_list_macros.h>
+#include <pluginlib/class_list_macros.hpp>
 PLUGINLIB_EXPORT_CLASS(stereo_image_proc::PointCloud2Nodelet,nodelet::Nodelet)
