@@ -113,12 +113,12 @@ void PointCloudXyzrgbNodelet::onInit()
   if (use_exact_sync)
   {
     exact_sync_.reset( new ExactSynchronizer(ExactSyncPolicy(queue_size), sub_depth_, sub_rgb_, sub_info_) );
-    exact_sync_->registerCallback(boost::bind(&PointCloudXyzrgbNodelet::imageCb, this, _1, _2, _3));
+    exact_sync_->registerCallback(boost::bind(&PointCloudXyzrgbNodelet::imageCb, this, boost::placeholders::_1, boost::placeholders::_2, boost::placeholders::_3));
   }
   else
   {
     sync_.reset( new Synchronizer(SyncPolicy(queue_size), sub_depth_, sub_rgb_, sub_info_) );
-    sync_->registerCallback(boost::bind(&PointCloudXyzrgbNodelet::imageCb, this, _1, _2, _3));
+    sync_->registerCallback(boost::bind(&PointCloudXyzrgbNodelet::imageCb, this, boost::placeholders::_1, boost::placeholders::_2, boost::placeholders::_3));
   }
   
   // Monitor whether anyone is subscribed to the output
@@ -355,5 +355,5 @@ void PointCloudXyzrgbNodelet::convert(const sensor_msgs::ImageConstPtr& depth_ms
 } // namespace depth_image_proc
 
 // Register as nodelet
-#include <pluginlib/class_list_macros.h>
+#include <pluginlib/class_list_macros.hpp>
 PLUGINLIB_EXPORT_CLASS(depth_image_proc::PointCloudXyzrgbNodelet,nodelet::Nodelet);
