@@ -1,0 +1,239 @@
+ros-noetic-stereo-image-proc (1.17.0-1buster) buster; urgency=high
+
+  * Switch to hpp headers of pluginlib
+  * Drop old C++ standard compiler flag
+  * Switch to new boost/bind/bind.hpp
+  * Contributors: Jochen Sprickerhof
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Mon, 17 Oct 2022 05:00:00 -0000
+
+ros-noetic-stereo-image-proc (1.16.0-1buster) buster; urgency=high
+
+  * Fix includes
+    In the following commit in vision_opencv, the include
+    opencv2/calib3d/calib3d.hpp was removed from pinhole_camera_model.h :
+    https://github.com/ros-perception/vision_opencv/commit/51ca54354a8353fc728fcc8bd8ead7d2b6cf7444
+    Since we indirectly depended on this include, we now have to add it
+    directly.
+  * support rgba8 and bgra8 encodings by skipping alpha channel
+  * downsampling original img / upsampling disparity img
+  * Contributors: Avinash Thakur, Martin Günther, choi0330
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Fri, 12 Nov 2021 06:00:00 -0000
+
+ros-noetic-stereo-image-proc (1.15.3-1buster) buster; urgency=high
+
+  * remove email blasts from steve macenski (#595 <https://github.com/ros-perception/image_pipeline/issues/595>)
+  * Contributors: Steve Macenski
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Fri, 11 Dec 2020 06:00:00 -0000
+
+ros-noetic-stereo-image-proc (1.15.2-1buster) buster; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Tue, 19 May 2020 05:00:00 -0000
+
+ros-noetic-stereo-image-proc (1.15.1-1buster) buster; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Mon, 18 May 2020 05:00:00 -0000
+
+ros-noetic-stereo-image-proc (1.15.0-1buster) buster; urgency=high
+
+  * Python 3 compatibility (#530 <https://github.com/ros-perception/image_pipeline/issues/530>)
+  * cmake_minimum_required to 3.0.2
+  * Adapted to OpenCV4
+  * import setup from setuptools instead of distutils-core
+  * updated install locations for better portability. (#500 <https://github.com/ros-perception/image_pipeline/issues/500>)
+  * Contributors: Joshua Whitley, Sean Yen
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Thu, 14 May 2020 05:00:00 -0000
+
+ros-noetic-stereo-image-proc (1.14.0-1buster) buster; urgency=high
+
+  * Expand range for min_disparity and disparity_range. (#431 <https://github.com/ros-perception/image_pipeline/issues/431>)
+  * Contributors: Terry Welsh, Tim Übelhör
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sun, 12 Jan 2020 06:00:00 -0000
+
+ros-noetic-stereo-image-proc (1.13.0-1buster) buster; urgency=high
+
+  * Merge pull request #375 <https://github.com/ros-perception/image_pipeline/issues/375> from fizyr-forks/opencv4
+  * Fix OpenCV4 compatibility.
+  * Merge pull request #338 <https://github.com/ros-perception/image_pipeline/issues/338> from k-okada/arg_sync
+  * add approximate_sync args in stereo_image_proc.launch
+  * Merge pull request #395 <https://github.com/ros-perception/image_pipeline/issues/395> from ros-perception/steve_maintain
+  * adding autonomoustuff mainainer
+  * adding stevemacenski as maintainer to get emails
+  * Merge pull request #392 <https://github.com/ros-perception/image_pipeline/issues/392> from bknight-i3drobotics/patch-1
+  * Fix typo
+    Typo in line: 14. Changed 'sterel algorithm' to 'stereo algorithm'
+  * add approximate_sync args in stereo_image_proc.launch
+  * Contributors: Hans Gaiser, Joshua Whitley, Kei Okada, Steven Macenski, Yoshito Okada, bknight-i3drobotics, stevemacenski
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Wed, 12 Jun 2019 05:00:00 -0000
+
+ros-noetic-stereo-image-proc (1.12.23-1buster) buster; urgency=high
+
+  * Removed unused mutable scratch buffers (#315 <https://github.com/ros-perception/image_pipeline/issues/315>)
+    The uint32_t buffers conflicted with newer release of OpenCV3, as explained here https://github.com/ros-perception/image_pipeline/issues/310
+  * Contributors: Miquel Massot
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Thu, 10 May 2018 05:00:00 -0000
+
+ros-noetic-stereo-image-proc (1.12.22-1buster) buster; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Fri, 08 Dec 2017 06:00:00 -0000
+
+ros-noetic-stereo-image-proc (1.12.21-1buster) buster; urgency=high
+
+  * Updated fix for traits change. (#303 <https://github.com/ros-perception/image_pipeline/issues/303>)
+  * Fix C++11 compilation
+    This fixes #292 <https://github.com/ros-perception/image_pipeline/issues/292> and #291 <https://github.com/ros-perception/image_pipeline/issues/291>
+  * Contributors: Mike Purvis, Vincent Rabaud
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sun, 05 Nov 2017 05:00:00 -0000
+
+ros-noetic-stereo-image-proc (1.12.20-1buster) buster; urgency=high
+
+  * fix doc jobs
+    This is a proper fix for #233 <https://github.com/ros-perception/image_pipeline/issues/233>
+  * address gcc6 build error
+    With gcc6, compiling fails with stdlib.h: No such file or directory,
+    as including '-isystem /usr/include' breaks with gcc6, cf.,
+    https://gcc.gnu.org/bugzilla/show_bug.cgi?id=70129.
+    This commit addresses this issue for this package in the same way
+    it was addressed in various other ROS packages. A list of related
+    commits and pull requests is at:
+    https://github.com/ros/rosdistro/issues/12783
+    Signed-off-by: Lukas Bulwahn <mailto:lukas.bulwahn@oss.bmw-carit.de>
+  * Contributors: Lukas Bulwahn, Vincent Rabaud
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sun, 30 Apr 2017 05:00:00 -0000
+
+ros-noetic-stereo-image-proc (1.12.19-1buster) buster; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sun, 24 Jul 2016 05:00:00 -0000
+
+ros-noetic-stereo-image-proc (1.12.18-1buster) buster; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Tue, 12 Jul 2016 05:00:00 -0000
+
+ros-noetic-stereo-image-proc (1.12.17-1buster) buster; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Mon, 11 Jul 2016 05:00:00 -0000
+
+ros-noetic-stereo-image-proc (1.12.16-1buster) buster; urgency=high
+
+  * clean OpenCV dependency in package.xml
+  * Contributors: Vincent Rabaud
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sat, 19 Mar 2016 05:00:00 -0000
+
+ros-noetic-stereo-image-proc (1.12.15-1buster) buster; urgency=high
+
+  * simplify OpenCV3 conversion
+  * Contributors: Vincent Rabaud
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sun, 17 Jan 2016 06:00:00 -0000
+
+ros-noetic-stereo-image-proc (1.12.14-1buster) buster; urgency=high
+
+  * add StereoSGBM and it can be chosen from dynamic_reconfigure
+  * Contributors: Ryohei Ueda
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Wed, 22 Jul 2015 05:00:00 -0000
+
+ros-noetic-stereo-image-proc (1.12.13-1buster) buster; urgency=high
+
+  * get code to compile with OpenCV3
+  * modify pointcloud data format of stereo_image_proc using point_cloud2_iterator
+  * Contributors: Hiroaki Yaguchi, Vincent Rabaud
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Mon, 06 Apr 2015 05:00:00 -0000
+
+ros-noetic-stereo-image-proc (1.12.12-1buster) buster; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Wed, 31 Dec 2014 06:00:00 -0000
+
+ros-noetic-stereo-image-proc (1.12.11-1buster) buster; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sun, 26 Oct 2014 05:00:00 -0000
+
+ros-noetic-stereo-image-proc (1.12.10-1buster) buster; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sun, 28 Sep 2014 05:00:00 -0000
+
+ros-noetic-stereo-image-proc (1.12.9-1buster) buster; urgency=high
+
+  * get code to compile with OpenCV3
+    fixes #96 <https://github.com/ros-perception/image_pipeline/issues/96>
+  * Contributors: Vincent Rabaud
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sun, 21 Sep 2014 05:00:00 -0000
+
+ros-noetic-stereo-image-proc (1.12.8-1buster) buster; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Tue, 19 Aug 2014 05:00:00 -0000
+
+ros-noetic-stereo-image-proc (1.12.6-1buster) buster; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sun, 27 Jul 2014 05:00:00 -0000
+
+ros-noetic-stereo-image-proc (1.12.4-1buster) buster; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Mon, 28 Apr 2014 05:00:00 -0000
+
+ros-noetic-stereo-image-proc (1.12.3-1buster) buster; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sat, 12 Apr 2014 05:00:00 -0000
+
+ros-noetic-stereo-image-proc (1.12.2-1buster) buster; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Tue, 08 Apr 2014 05:00:00 -0000
+
+ros-noetic-stereo-image-proc (1.12.0-1buster) buster; urgency=high
+
+  * remove PointCloud1 nodelets
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Fri, 04 Apr 2014 05:00:00 -0000
+
+ros-noetic-stereo-image-proc (1.11.5-1buster) buster; urgency=high
+
+  * fix compilation on OSX (#50)
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sat, 07 Dec 2013 13:42:55 -0600
+
+ros-noetic-stereo-image-proc (1.11.4-1buster) buster; urgency=high
+
+  * convert images to MONO8 when computing disparity if needed (#49)
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sat, 23 Nov 2013 13:10:55 -0600
+
+
