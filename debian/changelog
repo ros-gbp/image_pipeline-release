@@ -1,0 +1,267 @@
+ros-noetic-depth-image-proc (1.17.0-1buster) buster; urgency=high
+
+  * Switch to hpp headers of pluginlib
+  * Drop old C++ standard compiler flag
+  * Switch to new boost/bind/bind.hpp
+  * Add missing CATKIN_DEPENDS
+  * Update frame id to match depth_front, rgb_front
+  * Create point_cloud_xyzrgb.launch
+    Created launch file for point_cloud_xyzrgb
+  * Delete depth_image_proc/script directory
+  * Delete depth_image_proc/launch directory
+  * Contributors: Anirban Dam, Jochen Sprickerhof
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Mon, 17 Oct 2022 05:00:00 -0000
+
+ros-noetic-depth-image-proc (1.16.0-1buster) buster; urgency=high
+
+  * Fix includes
+    In the following commit in vision_opencv, the include
+    opencv2/calib3d/calib3d.hpp was removed from pinhole_camera_model.h :
+    https://github.com/ros-perception/vision_opencv/commit/51ca54354a8353fc728fcc8bd8ead7d2b6cf7444
+    Since we indirectly depended on this include, we now have to add it
+    directly.
+  * support rgba8 and bgra8 encodings by skipping alpha channel
+  * functional xyzrgb radial nodelet
+  * add xyzrgb radial nodelet
+  * Support MONO16 image encodings.
+  * Add missing cstdint, vector, cmath includes.
+  * Contributors: Avinash Thakur, Evan Flynn, Martin Günther, Mike Purvis
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Fri, 12 Nov 2021 06:00:00 -0000
+
+ros-noetic-depth-image-proc (1.15.3-1buster) buster; urgency=high
+
+  * remove email blasts from steve macenski (#595 <https://github.com/ros-perception/image_pipeline/issues/595>)
+  * Contributors: Steve Macenski
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Fri, 11 Dec 2020 06:00:00 -0000
+
+ros-noetic-depth-image-proc (1.15.2-1buster) buster; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Tue, 19 May 2020 05:00:00 -0000
+
+ros-noetic-depth-image-proc (1.15.1-1buster) buster; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Mon, 18 May 2020 05:00:00 -0000
+
+ros-noetic-depth-image-proc (1.15.0-1buster) buster; urgency=high
+
+  * Python 3 compatibility (#530 <https://github.com/ros-perception/image_pipeline/issues/530>)
+  * cmake_minimum_required to 3.0.2
+  * Adapted to OpenCV4
+  * import setup from setuptools instead of distutils-core
+  * updated install locations for better portability. (#500 <https://github.com/ros-perception/image_pipeline/issues/500>)
+  * Contributors: Joshua Whitley, Sean Yen
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Thu, 14 May 2020 05:00:00 -0000
+
+ros-noetic-depth-image-proc (1.14.0-1buster) buster; urgency=high
+
+  * Merge pull request #478 <https://github.com/ros-perception/image_pipeline/issues/478> from ros-perception/steve_main
+    added option to fill the sparse areas with neareast neighbor depth va…
+  * Merge pull request #336 <https://github.com/ros-perception/image_pipeline/issues/336> from madsherlock/indigo
+    depth_image_proc/point_cloud_xyzi_radial Add intensity conversion (copy) for float
+  * depth_image_proc: fix support for mono16 intensity encoding in point_cloud_xyzi node (#352 <https://github.com/ros-perception/image_pipeline/issues/352>)
+  * added option to fill the sparse areas with neareast neighbor depth values on upsampling operations in depth_image_proc/register
+  * point_cloud_xyzi Add intensity conversion for float
+  * Add intensity conversion (copy) for float
+    This commit enables the generation of xyzi point clouds from 32-bit floating point intensity images.
+    The destination data type for intensity storage is 32-bit float, so all that is required is a data copy.
+    The change in this commit is simply an extension of the if-else statement to include the TYPE_32FC1 type and apply the usual convert_intensity() method.
+  * Contributors: Mikael Westermann, Richard Bormann, Steven Macenski, Stewart Jamieson, Tim Übelhör
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sun, 12 Jan 2020 06:00:00 -0000
+
+ros-noetic-depth-image-proc (1.13.0-1buster) buster; urgency=high
+
+  * Merge pull request #395 <https://github.com/ros-perception/image_pipeline/issues/395> from ros-perception/steve_maintain
+  * adding autonomoustuff mainainer
+  * adding stevemacenski as maintainer to get emails
+  * Contributors: Joshua Whitley, Yoshito Okada, stevemacenski
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Wed, 12 Jun 2019 05:00:00 -0000
+
+ros-noetic-depth-image-proc (1.12.23-1buster) buster; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Thu, 10 May 2018 05:00:00 -0000
+
+ros-noetic-depth-image-proc (1.12.22-1buster) buster; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Fri, 08 Dec 2017 06:00:00 -0000
+
+ros-noetic-depth-image-proc (1.12.21-1buster) buster; urgency=high
+
+  * Fix C++11 compilation
+    This fixes #292 <https://github.com/ros-perception/image_pipeline/issues/292> and #291 <https://github.com/ros-perception/image_pipeline/issues/291>
+  * Contributors: Vincent Rabaud
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sun, 05 Nov 2017 05:00:00 -0000
+
+ros-noetic-depth-image-proc (1.12.20-1buster) buster; urgency=high
+
+  * Fix CMake warnings about Eigen.
+  * Convert depth image metric from [m] to [mm]
+  * address gcc6 build error
+    With gcc6, compiling fails with stdlib.h: No such file or directory,
+    as including '-isystem /usr/include' breaks with gcc6, cf.,
+    https://gcc.gnu.org/bugzilla/show_bug.cgi?id=70129.
+    This commit addresses this issue for this package in the same way
+    it was addressed in various other ROS packages. A list of related
+    commits and pull requests is at:
+    https://github.com/ros/rosdistro/issues/12783
+    Signed-off-by: Lukas Bulwahn <mailto:lukas.bulwahn@oss.bmw-carit.de>
+  * Contributors: Kentaro Wada, Lukas Bulwahn, Vincent Rabaud
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sun, 30 Apr 2017 05:00:00 -0000
+
+ros-noetic-depth-image-proc (1.12.19-1buster) buster; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sun, 24 Jul 2016 05:00:00 -0000
+
+ros-noetic-depth-image-proc (1.12.18-1buster) buster; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Tue, 12 Jul 2016 05:00:00 -0000
+
+ros-noetic-depth-image-proc (1.12.17-1buster) buster; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Mon, 11 Jul 2016 05:00:00 -0000
+
+ros-noetic-depth-image-proc (1.12.16-1buster) buster; urgency=high
+
+  * check number of channels before the process
+  * search minimum value with OpenCV
+  * Use OpenCV to be faster
+  * Add a feature for a depth image to crop foremost image
+  * Contributors: Kenta Yonekura
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sat, 19 Mar 2016 05:00:00 -0000
+
+ros-noetic-depth-image-proc (1.12.15-1buster) buster; urgency=high
+
+  * Add option for exact time sync for point_cloud_xyzrgb
+  * simplify OpenCV3 conversion
+  * Contributors: Kentaro Wada, Vincent Rabaud
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sun, 17 Jan 2016 06:00:00 -0000
+
+ros-noetic-depth-image-proc (1.12.14-1buster) buster; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Wed, 22 Jul 2015 05:00:00 -0000
+
+ros-noetic-depth-image-proc (1.12.13-1buster) buster; urgency=high
+
+  * Add radial point cloud processors
+  * Contributors: Hunter Laux
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Mon, 06 Apr 2015 05:00:00 -0000
+
+ros-noetic-depth-image-proc (1.12.12-1buster) buster; urgency=high
+
+  * adds range_max
+  * exports depth_conversions
+    with convert for xyz PC only
+  * exports DepthTraits
+  * Contributors: enriquefernandez
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Wed, 31 Dec 2014 06:00:00 -0000
+
+ros-noetic-depth-image-proc (1.12.11-1buster) buster; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sun, 26 Oct 2014 05:00:00 -0000
+
+ros-noetic-depth-image-proc (1.12.10-1buster) buster; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sun, 28 Sep 2014 05:00:00 -0000
+
+ros-noetic-depth-image-proc (1.12.9-1buster) buster; urgency=high
+
+  * get code to compile with OpenCV3
+    fixes #96 <https://github.com/ros-perception/image_pipeline/issues/96>
+  * Contributors: Vincent Rabaud
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sun, 21 Sep 2014 05:00:00 -0000
+
+ros-noetic-depth-image-proc (1.12.8-1buster) buster; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Tue, 19 Aug 2014 05:00:00 -0000
+
+ros-noetic-depth-image-proc (1.12.6-1buster) buster; urgency=high
+
+  * Add point_cloud_xyzi nodelet
+    This is for cameras that output depth and intensity images.
+    It's based on the point_cloud_xyzrgb nodelet.
+  * Missing runtime dependency - eigen_conversions
+    libdepth_image_proc is missing this dependency at runtime
+    ```
+    > ldd libdepth_image_proc.so  | grep eigen
+    libeigen_conversions.so => not found
+    ```
+    Which causes the following error on loading depth_image_proc:
+    ```
+    [ INFO] [1402564815.530736554]: /camera/rgb/camera_info -> /camera/rgb/camera_info
+    [ERROR] [1402564815.727176562]: Failed to load nodelet [/camera/depth_metric_rect] of type
+    [depth_image_proc/convert_metric]: Failed to load library /opt/ros/indigo/lib//libdepth_image_proc.so.
+    Make sure that you are calling the PLUGINLIB_EXPORT_CLASS macro in the library code, and that
+    names are consistent between this macro and your XML. Error string: Could not load library (Poco
+    exception = libeigen_conversions.so: cannot open shared object file: No such file or directory)
+    [FATAL] [1402564815.727410623]: Service call failed!
+    ```
+  * Contributors: Daniel Stonier, Hunter Laux
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sun, 27 Jul 2014 05:00:00 -0000
+
+ros-noetic-depth-image-proc (1.12.4-1buster) buster; urgency=high
+
+  * depth_image_proc: fix missing symbols in nodelets
+  * Contributors: Michael Ferguson
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Mon, 28 Apr 2014 05:00:00 -0000
+
+ros-noetic-depth-image-proc (1.12.3-1buster) buster; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sat, 12 Apr 2014 05:00:00 -0000
+
+ros-noetic-depth-image-proc (1.12.2-1buster) buster; urgency=high
+
+
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Tue, 08 Apr 2014 05:00:00 -0000
+
+ros-noetic-depth-image-proc (1.12.1-1buster) buster; urgency=high
+
+  * replace tf usage by tf2 usage
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Sun, 06 Apr 2014 05:00:00 -0000
+
+ros-noetic-depth-image-proc (1.12.0-1buster) buster; urgency=high
+
+  * remove PCL dependency
+
+ -- Vincent Rabaud <vincent.rabaud@gmail.com>  Fri, 04 Apr 2014 05:00:00 -0000
+
+

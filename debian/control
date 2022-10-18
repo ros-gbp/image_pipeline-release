@@ -1,0 +1,13 @@
+Source: ros-noetic-depth-image-proc
+Section: misc
+Priority: optional
+Maintainer: Vincent Rabaud <vincent.rabaud@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), libboost-all-dev, ros-noetic-catkin, ros-noetic-cmake-modules, ros-noetic-cv-bridge, ros-noetic-eigen-conversions, ros-noetic-image-geometry, ros-noetic-image-transport, ros-noetic-message-filters, ros-noetic-nodelet, ros-noetic-rostest <!nocheck>, ros-noetic-sensor-msgs, ros-noetic-stereo-msgs, ros-noetic-tf2, ros-noetic-tf2-ros
+Homepage: http://ros.org/wiki/depth_image_proc
+Standards-Version: 3.9.2
+
+Package: ros-noetic-depth-image-proc
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libboost-all-dev, ros-noetic-cv-bridge, ros-noetic-eigen-conversions, ros-noetic-image-geometry, ros-noetic-image-transport, ros-noetic-nodelet, ros-noetic-sensor-msgs, ros-noetic-tf2, ros-noetic-tf2-ros
+Description: Contains nodelets for processing depth images such as those produced by OpenNI camera.
+ Functions include creating disparity images and point clouds, as well as registering (reprojecting) a depth image into another camera frame.
